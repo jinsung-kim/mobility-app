@@ -1,0 +1,6 @@
+framework module Pods_NYU_Mobility_3 {
+  umbrella header "Pods-NYU Mobility 3-umbrella.h"
+
+  export *
+  module * { export * }
+}
