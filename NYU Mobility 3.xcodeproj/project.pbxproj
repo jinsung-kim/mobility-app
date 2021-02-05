@@ -17,6 +17,10 @@
 		A149575525CE0718006BBFAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A149575325CE0718006BBFAC /* LaunchScreen.storyboard */; };
 		A149576925CE094C006BBFAC /* Gyro.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576825CE094C006BBFAC /* Gyro.swift */; };
 		A149576E25CE0972006BBFAC /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576D25CE0972006BBFAC /* Point.swift */; };
+		A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9167E25CE0B6800D8D8D7 /* Colors.swift */; };
+		A1B9168325CE0B8E00D8D8D7 /* BubbleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */; };
+		A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */; };
+		A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		A149575625CE0718006BBFAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A149576825CE094C006BBFAC /* Gyro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gyro.swift; sourceTree = "<group>"; };
 		A149576D25CE0972006BBFAC /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		A1B9167E25CE0B6800D8D8D7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextField.swift; sourceTree = "<group>"; };
+		A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
+		A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Indexing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,9 @@
 		A149576325CE08C4006BBFAC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A1B9167E25CE0B6800D8D8D7 /* Colors.swift */,
+				A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */,
+				A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 		A149576625CE08D7006BBFAC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -262,10 +274,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */,
 				A149574A25CE0717006BBFAC /* ViewController.swift in Sources */,
 				A149575025CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld in Sources */,
 				A149576E25CE0972006BBFAC /* Point.swift in Sources */,
+				A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */,
+				A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */,
 				A149574625CE0717006BBFAC /* AppDelegate.swift in Sources */,
+				A1B9168325CE0B8E00D8D8D7 /* BubbleTextField.swift in Sources */,
 				A149576925CE094C006BBFAC /* Gyro.swift in Sources */,
 				A149574825CE0717006BBFAC /* SceneDelegate.swift in Sources */,
 			);
