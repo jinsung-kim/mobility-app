@@ -83,7 +83,6 @@
 				A149576425CE08C9006BBFAC /* Views */,
 				A149576325CE08C4006BBFAC /* UI */,
 				A149576225CE08BD006BBFAC /* Models */,
-				A149574925CE0717006BBFAC /* ViewController.swift */,
 				A149575625CE0718006BBFAC /* Info.plist */,
 			);
 			path = "NYU Mobility 3";
@@ -109,6 +108,7 @@
 		A149576425CE08C9006BBFAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A149574925CE0717006BBFAC /* ViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jin-kim.NYU-Mobility-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -445,7 +445,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jin-kim.NYU-Mobility-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

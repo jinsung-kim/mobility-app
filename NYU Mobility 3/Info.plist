@@ -20,6 +20,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+    <key>NSCameraUsageDescription</key>
+    <string>Your camera is needed to visualize motion</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Your location is needed to track where you go</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your location is needed to see where you go</string>
+    <key>NSMotionUsageDescription</key>
+    <string>Your motion will be used to track your progress</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Access to your photos is needed to save videos</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
