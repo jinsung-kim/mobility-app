@@ -11,10 +11,23 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Won't turn off by itself
+        application.isIdleTimerDisabled = true
+        
+        // Override point for customization after application launch
+        let defaults = UserDefaults.standard
+        /*
+         VARIABLE USES:
+         email: used within the file name as identification
+         */
+        let defaultValue = ["email" : ""] as [String : Any]
+        defaults.register(defaults: defaultValue)
+        
         return true
     }
 
