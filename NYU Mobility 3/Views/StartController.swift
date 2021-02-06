@@ -18,6 +18,17 @@ class StartController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    // Used to ensure that
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     // Registers button clicks + validates + redirects
     @IBAction func button1Pressed(_ sender: Any) {
