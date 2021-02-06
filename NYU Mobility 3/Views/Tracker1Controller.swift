@@ -176,7 +176,6 @@ class Tracker1Controller: UIViewController,
     
     /// Used to transfer data over to the share video
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Currently not being used (Playback)
         let vc = segue.destination as! ShareController
         vc.videoURL = outputURL
         vc.saved = saved

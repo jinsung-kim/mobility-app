@@ -185,14 +185,30 @@
                     <view key="view" contentMode="scaleToFill" id="PQT-5b-aoQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjL-sT-MEv">
+                                <rect key="frame" x="55" y="251" width="304" height="394"/>
+                                <state key="normal" image="share"/>
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="Mgf-8a-wIJ" eventType="touchUpInside" id="wi6-eJ-zbG"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yag-B1-kaz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CjL-sT-MEv" firstAttribute="centerX" secondItem="PQT-5b-aoQ" secondAttribute="centerX" id="pcF-5t-Iet"/>
+                            <constraint firstItem="CjL-sT-MEv" firstAttribute="centerY" secondItem="PQT-5b-aoQ" secondAttribute="centerY" id="q5X-By-peN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w6I-8u-4qb"/>
+                    <connections>
+                        <outlet property="shareButton" destination="CjL-sT-MEv" id="LYk-Vt-DM0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbC-cU-JHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3349" y="106"/>
+            <point key="canvasLocation" x="3347.826086956522" y="105.80357142857143"/>
         </scene>
         <!--Tracker3 Controller-->
         <scene sceneID="O7S-Mw-QzX">
@@ -223,14 +239,17 @@
                                     <constraint firstAttribute="height" constant="240" id="ouE-Vu-5Lo"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="q3V-9X-W8D"/>
                                 </constraints>
-                                <state key="normal" title="Start"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="pRH-1x-5mh" eventType="touchUpInside" id="Z06-vo-UD5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bmW-EV-Yg9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bmW-EV-Yg9" firstAttribute="bottom" secondItem="JbQ-MW-6tq" secondAttribute="bottom" constant="20" id="GsY-m6-ZwF"/>
                             <constraint firstItem="vCx-0f-P9O" firstAttribute="centerY" secondItem="fNW-VP-mlG" secondAttribute="centerY" id="L97-0T-wDC"/>
@@ -275,6 +294,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="oandmicon" width="820" height="816"/>
+        <image name="share" width="304" height="394"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
