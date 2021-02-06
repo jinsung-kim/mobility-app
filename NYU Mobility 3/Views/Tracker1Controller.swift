@@ -67,7 +67,8 @@ class Tracker1Controller: UIViewController,
     /// Sets up the camera button used to start recording/stop recording
     func setupButton() {
         cameraButton.isUserInteractionEnabled = true
-        let cameraButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(Tracker1Controller.startCapture))
+        let cameraButtonRecognizer = UITapGestureRecognizer(target: self,
+                                                            action: #selector(Tracker1Controller.startCapture))
         cameraButton.addGestureRecognizer(cameraButtonRecognizer)
         cameraButton.backgroundColor = UIColor.white // button is white when initialized
         cameraButton.layer.cornerRadius = 30 // button round
@@ -130,7 +131,7 @@ class Tracker1Controller: UIViewController,
     
     func videoQueue() -> DispatchQueue { return DispatchQueue.main }
     
-    /// Only allows portrait mode
+    /// Only allows portrait mode -> Change in more recent version (TEST)
     func currentVideoOrientation() -> AVCaptureVideoOrientation {
         return AVCaptureVideoOrientation.portrait
     }
@@ -177,19 +178,11 @@ class Tracker1Controller: UIViewController,
     /// Used to transfer data over to the share video
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Currently not being used (Playback)
-//        if (segue.identifier == "ShareVideo") {
-//            let vc = segue.destination as! PlaybackController
-//            vc.videoURL = outputURL
-//            vc.saved = saved
-//            vc.json = json
-//            // vc.json2 = json2
-//        } else if (segue.identifier == "ShareVideoTest") { // Sends to the screen to share
-//            let vc = segue.destination as! ShareVideoController
-//            vc.videoURL = outputURL
-//            vc.saved = saved
-//            vc.json = json
-//            vc.json2 = json2
-//        }
+        let vc = segue.destination as! ShareController
+        vc.videoURL = outputURL
+        vc.saved = saved
+        vc.json = json
+        vc.json2 = json2
     }
     
     func startRecording() {
@@ -247,7 +240,7 @@ class Tracker1Controller: UIViewController,
         if (error != nil) {
             print("Error recording movie: \(error!.localizedDescription)")
         } else {
-            performSegue(withIdentifier: "ShareVideoTest", sender: outputURL!)
+            performSegue(withIdentifier: "Share1", sender: outputURL!)
         }
     }
     

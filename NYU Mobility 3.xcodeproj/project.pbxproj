@@ -25,6 +25,7 @@
 		A1B9169925CE294900D8D8D7 /* Tracker2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */; };
 		A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */; };
 		A1B9169F25CE36E600D8D8D7 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169E25CE36E600D8D8D7 /* Step.swift */; };
+		A1B916A225CE38E200D8D8D7 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B916A125CE38E200D8D8D7 /* ShareController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker2Controller.swift; sourceTree = "<group>"; };
 		A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker3Controller.swift; sourceTree = "<group>"; };
 		A1B9169E25CE36E600D8D8D7 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		A1B916A125CE38E200D8D8D7 /* ShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				A1B9169525CE28BC00D8D8D7 /* Tracker1Controller.swift */,
 				A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */,
 				A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */,
+				A1B916A125CE38E200D8D8D7 /* ShareController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */,
 				A149575025CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld in Sources */,
 				A1B9168D25CE111400D8D8D7 /* StartController.swift in Sources */,
+				A1B916A225CE38E200D8D8D7 /* ShareController.swift in Sources */,
 				A1B9169F25CE36E600D8D8D7 /* Step.swift in Sources */,
 				A149576E25CE0972006BBFAC /* Point.swift in Sources */,
 				A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */,

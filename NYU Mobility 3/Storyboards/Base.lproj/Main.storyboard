@@ -124,6 +124,7 @@
                     <connections>
                         <outlet property="camPreview" destination="Uw4-QP-emR" id="VeG-UL-mPj"/>
                         <outlet property="cameraButton" destination="nq1-fb-DRz" id="Ghl-CQ-aNh"/>
+                        <segue destination="Mgf-8a-wIJ" kind="show" identifier="Share1" id="mGm-4e-x3A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6AN-t5-PCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -141,10 +142,29 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Tv4-vd-CdN"/>
+                    <connections>
+                        <segue destination="Mgf-8a-wIJ" kind="show" identifier="Share2" id="haz-r4-DHj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3B-Ny-Cdy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2005.7971014492755" y="105.80357142857143"/>
+        </scene>
+        <!--Share Controller-->
+        <scene sceneID="bkw-GM-bs4">
+            <objects>
+                <viewController id="Mgf-8a-wIJ" customClass="ShareController" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PQT-5b-aoQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="yag-B1-kaz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="w6I-8u-4qb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbC-cU-JHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3349" y="106"/>
         </scene>
         <!--Tracker3 Controller-->
         <scene sceneID="O7S-Mw-QzX">
@@ -157,6 +177,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="frf-0h-Gfl"/>
+                    <connections>
+                        <segue destination="Mgf-8a-wIJ" kind="show" identifier="Share3" id="9uR-9u-0Ps"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvj-Rd-QLL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -181,6 +204,9 @@
             <point key="canvasLocation" x="-17.39130434782609" y="105.80357142857143"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9uR-9u-0Ps"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="oandmicon" width="820" height="816"/>
         <systemColor name="systemBackgroundColor">
