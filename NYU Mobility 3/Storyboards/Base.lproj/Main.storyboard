@@ -1,24 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Start Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StartController" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oandmicon" translatesAutoresizingMaskIntoConstraints="NO" id="UQJ-Mh-xnK">
+                                <rect key="frame" x="266" y="714" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="2db-Sl-25G"/>
+                                    <constraint firstAttribute="width" constant="128" id="zNA-o9-hwZ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naD-Ic-mw2" customClass="BubbleButton" customModule="NYU_Mobility_3" customModuleProvider="target">
+                                <rect key="frame" x="40" y="323" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ADk-bO-8MP"/>
+                                </constraints>
+                                <state key="normal" title="Video (Only Steps)"/>
+                                <connections>
+                                    <action selector="button1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wOB-Er-hvs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAE-ms-lg6" customClass="BubbleButton" customModule="NYU_Mobility_3" customModuleProvider="target">
+                                <rect key="frame" x="40" y="423" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="OEo-0P-0Jn"/>
+                                </constraints>
+                                <state key="normal" title="Video (Steps + GPS)"/>
+                                <connections>
+                                    <action selector="button2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q8X-ZY-wOT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4B4-UD-hpu" customClass="BubbleButton" customModule="NYU_Mobility_3" customModuleProvider="target">
+                                <rect key="frame" x="40" y="523" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ADx-Rw-ZI8"/>
+                                </constraints>
+                                <state key="normal" title="No Video (GPS + Steps)"/>
+                                <connections>
+                                    <action selector="button3Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D6z-Ky-KPf"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jAE-ms-lg6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5Ut-ty-kv1"/>
+                            <constraint firstItem="jAE-ms-lg6" firstAttribute="top" secondItem="naD-Ic-mw2" secondAttribute="bottom" constant="50" id="ABZ-B8-y0n"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="naD-Ic-mw2" secondAttribute="trailing" constant="40" id="JbN-N8-2sB"/>
+                            <constraint firstItem="jAE-ms-lg6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Jj7-kn-Me5"/>
+                            <constraint firstItem="4B4-UD-hpu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="POh-u3-mz3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UQJ-Mh-xnK" secondAttribute="bottom" constant="20" id="hwz-tT-trY"/>
+                            <constraint firstItem="4B4-UD-hpu" firstAttribute="top" secondItem="jAE-ms-lg6" secondAttribute="bottom" constant="50" id="lpS-O8-TRy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UQJ-Mh-xnK" secondAttribute="trailing" constant="20" id="oPh-0p-Z5W"/>
+                            <constraint firstItem="naD-Ic-mw2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="p4R-a6-SX0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4B4-UD-hpu" secondAttribute="trailing" constant="40" id="s2P-cu-gcs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jAE-ms-lg6" secondAttribute="trailing" constant="40" id="zBw-TU-09x"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="option1Button" destination="naD-Ic-mw2" id="KrH-n0-yOd"/>
+                        <outlet property="option2Button" destination="jAE-ms-lg6" id="gtF-Sh-nNl"/>
+                        <outlet property="option3Button" destination="4B4-UD-hpu" id="OfY-4x-1M5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-16" y="106"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="oandmicon" width="820" height="816"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

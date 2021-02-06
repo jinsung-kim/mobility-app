@@ -10,7 +10,6 @@
 		5529F9F565A3FED61E5F7A16 /* Pods_NYU_Mobility_3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D898B8D18120E64A85E90F0 /* Pods_NYU_Mobility_3.framework */; };
 		A149574625CE0717006BBFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574525CE0717006BBFAC /* AppDelegate.swift */; };
 		A149574825CE0717006BBFAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574725CE0717006BBFAC /* SceneDelegate.swift */; };
-		A149574A25CE0717006BBFAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574925CE0717006BBFAC /* ViewController.swift */; };
 		A149574D25CE0717006BBFAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A149574B25CE0717006BBFAC /* Main.storyboard */; };
 		A149575025CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A149574E25CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld */; };
 		A149575225CE0718006BBFAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A149575125CE0718006BBFAC /* Assets.xcassets */; };
@@ -21,6 +20,7 @@
 		A1B9168325CE0B8E00D8D8D7 /* BubbleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */; };
 		A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */; };
 		A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */; };
+		A1B9168D25CE111400D8D8D7 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168C25CE111400D8D8D7 /* StartController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,6 @@
 		A149574225CE0717006BBFAC /* NYU Mobility 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYU Mobility 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A149574525CE0717006BBFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A149574725CE0717006BBFAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A149574925CE0717006BBFAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A149574C25CE0717006BBFAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A149574F25CE0717006BBFAC /* NYU_Mobility_3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NYU_Mobility_3.xcdatamodel; sourceTree = "<group>"; };
 		A149575125CE0718006BBFAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextField.swift; sourceTree = "<group>"; };
 		A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
 		A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Indexing.swift"; sourceTree = "<group>"; };
+		A1B9168C25CE111400D8D8D7 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +119,7 @@
 		A149576425CE08C9006BBFAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A149574925CE0717006BBFAC /* ViewController.swift */,
+				A1B9168C25CE111400D8D8D7 /* StartController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,8 +275,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */,
-				A149574A25CE0717006BBFAC /* ViewController.swift in Sources */,
 				A149575025CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld in Sources */,
+				A1B9168D25CE111400D8D8D7 /* StartController.swift in Sources */,
 				A149576E25CE0972006BBFAC /* Point.swift in Sources */,
 				A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */,
 				A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */,
