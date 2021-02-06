@@ -21,6 +21,10 @@
 		A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */; };
 		A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */; };
 		A1B9168D25CE111400D8D8D7 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168C25CE111400D8D8D7 /* StartController.swift */; };
+		A1B9169625CE28BC00D8D8D7 /* Tracker1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169525CE28BC00D8D8D7 /* Tracker1Controller.swift */; };
+		A1B9169925CE294900D8D8D7 /* Tracker2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */; };
+		A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */; };
+		A1B9169F25CE36E600D8D8D7 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169E25CE36E600D8D8D7 /* Step.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
 		A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Indexing.swift"; sourceTree = "<group>"; };
 		A1B9168C25CE111400D8D8D7 /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
+		A1B9169525CE28BC00D8D8D7 /* Tracker1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker1Controller.swift; sourceTree = "<group>"; };
+		A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker2Controller.swift; sourceTree = "<group>"; };
+		A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker3Controller.swift; sourceTree = "<group>"; };
+		A1B9169E25CE36E600D8D8D7 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,7 @@
 				A149574E25CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld */,
 				A149576825CE094C006BBFAC /* Gyro.swift */,
 				A149576D25CE0972006BBFAC /* Point.swift */,
+				A1B9169E25CE36E600D8D8D7 /* Step.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -120,6 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				A1B9168C25CE111400D8D8D7 /* StartController.swift */,
+				A1B9169525CE28BC00D8D8D7 /* Tracker1Controller.swift */,
+				A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */,
+				A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,9 +289,13 @@
 				A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */,
 				A149575025CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld in Sources */,
 				A1B9168D25CE111400D8D8D7 /* StartController.swift in Sources */,
+				A1B9169F25CE36E600D8D8D7 /* Step.swift in Sources */,
 				A149576E25CE0972006BBFAC /* Point.swift in Sources */,
+				A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */,
 				A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */,
+				A1B9169925CE294900D8D8D7 /* Tracker2Controller.swift in Sources */,
 				A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */,
+				A1B9169625CE28BC00D8D8D7 /* Tracker1Controller.swift in Sources */,
 				A149574625CE0717006BBFAC /* AppDelegate.swift in Sources */,
 				A1B9168325CE0B8E00D8D8D7 /* BubbleTextField.swift in Sources */,
 				A149576925CE094C006BBFAC /* Gyro.swift in Sources */,

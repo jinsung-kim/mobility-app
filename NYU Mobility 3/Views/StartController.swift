@@ -55,7 +55,10 @@ class StartController: UIViewController {
     func validateEmail() -> Bool {
         if (UserDefaults.standard.string(forKey: "email")! == "") {
             showInputDialog(title: "Enter your email",
-                            subtitle: "Your email is needed to label files (No emails will be sent to you or from you)",
+                            subtitle: """
+                                        Your email is needed to label files \
+                                        (No emails will be sent to you or from you)
+                                      """,
                             actionTitle: "Add",
                             cancelTitle: "Cancel",
                             inputPlaceholder: "Ex: test@gmail.com",

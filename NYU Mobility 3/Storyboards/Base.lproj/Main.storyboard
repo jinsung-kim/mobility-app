@@ -84,26 +84,56 @@
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="105.80357142857143"/>
         </scene>
-        <!--View Controller-->
+        <!--Tracker1 Controller-->
         <scene sceneID="2UU-e6-tyZ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Q2Q-JD-Xgd" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Q2Q-JD-Xgd" customClass="Tracker1Controller" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NHx-r5-LKr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uw4-QP-emR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nq1-fb-DRz">
+                                        <rect key="frame" x="177" y="776" width="60" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="Gde-hr-V3d"/>
+                                            <constraint firstAttribute="height" constant="60" id="s0X-SV-TvR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="nq1-fb-DRz" firstAttribute="centerX" secondItem="Uw4-QP-emR" secondAttribute="centerX" id="CHh-Fs-sN9"/>
+                                    <constraint firstAttribute="bottom" secondItem="nq1-fb-DRz" secondAttribute="bottom" constant="60" id="UkM-Bn-mgm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="UVU-nU-JbF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Uw4-QP-emR" firstAttribute="top" secondItem="NHx-r5-LKr" secondAttribute="top" id="37Q-DH-NSB"/>
+                            <constraint firstItem="Uw4-QP-emR" firstAttribute="leading" secondItem="UVU-nU-JbF" secondAttribute="leading" id="3Ke-KQ-i3e"/>
+                            <constraint firstAttribute="bottom" secondItem="Uw4-QP-emR" secondAttribute="bottom" id="box-fe-Rgc"/>
+                            <constraint firstItem="UVU-nU-JbF" firstAttribute="trailing" secondItem="Uw4-QP-emR" secondAttribute="trailing" id="j7g-kx-31D"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wwA-V3-Tup"/>
+                    <connections>
+                        <outlet property="camPreview" destination="Uw4-QP-emR" id="VeG-UL-mPj"/>
+                        <outlet property="cameraButton" destination="nq1-fb-DRz" id="Ghl-CQ-aNh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6AN-t5-PCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096" y="-726"/>
+            <point key="canvasLocation" x="2005.7971014492755" y="-603.34821428571422"/>
         </scene>
-        <!--View Controller-->
+        <!--Tracker2 Controller-->
         <scene sceneID="dpb-az-d9b">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="kjU-c0-aFq" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="kjU-c0-aFq" customClass="Tracker2Controller" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CJf-LH-fmE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="2005.7971014492755" y="105.80357142857143"/>
         </scene>
-        <!--View Controller-->
+        <!--Tracker3 Controller-->
         <scene sceneID="O7S-Mw-QzX">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="pRH-1x-5mh" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="pRH-1x-5mh" customClass="Tracker3Controller" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fNW-VP-mlG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvj-Rd-QLL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096" y="948"/>
+            <point key="canvasLocation" x="2006" y="847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eaz-Yf-e72">
