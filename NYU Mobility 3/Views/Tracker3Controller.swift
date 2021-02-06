@@ -9,8 +9,16 @@ import UIKit
 
 class Tracker3Controller: UIViewController {
     
+    @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var startButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        
+    }
+    
 }

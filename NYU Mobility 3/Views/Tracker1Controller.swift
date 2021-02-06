@@ -16,7 +16,6 @@ class Tracker1Controller: UIViewController,
     @IBOutlet weak var camPreview: UIView!
     @IBOutlet weak var cameraButton: UIView!
     
-    
     let captureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
     

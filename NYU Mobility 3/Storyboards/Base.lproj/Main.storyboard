@@ -138,11 +138,39 @@
                     <view key="view" contentMode="scaleToFill" id="CJf-LH-fmE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3af-wL-qX4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfw-yy-ROI">
+                                        <rect key="frame" x="177" y="776" width="60" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="6nT-Lh-XAk"/>
+                                            <constraint firstAttribute="width" constant="60" id="zCZ-CS-qnO"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="hfw-yy-ROI" firstAttribute="centerX" secondItem="3af-wL-qX4" secondAttribute="centerX" id="0K7-wa-jz5"/>
+                                    <constraint firstAttribute="bottom" secondItem="hfw-yy-ROI" secondAttribute="bottom" constant="60" id="ZEi-AN-sG1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="MTY-it-fai"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3af-wL-qX4" firstAttribute="trailing" secondItem="MTY-it-fai" secondAttribute="trailing" id="GwC-Rp-gih"/>
+                            <constraint firstAttribute="bottom" secondItem="3af-wL-qX4" secondAttribute="bottom" id="QPD-aT-s90"/>
+                            <constraint firstItem="3af-wL-qX4" firstAttribute="leading" secondItem="MTY-it-fai" secondAttribute="leading" id="SgF-LU-tV5"/>
+                            <constraint firstItem="3af-wL-qX4" firstAttribute="top" secondItem="CJf-LH-fmE" secondAttribute="top" id="qk9-vI-yJS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Tv4-vd-CdN"/>
                     <connections>
+                        <outlet property="camPreview" destination="3af-wL-qX4" id="6Ft-f3-EDP"/>
+                        <outlet property="cameraButton" destination="hfw-yy-ROI" id="0xG-9C-i0e"/>
                         <segue destination="Mgf-8a-wIJ" kind="show" identifier="Share2" id="haz-r4-DHj"/>
                     </connections>
                 </viewController>
@@ -173,11 +201,49 @@
                     <view key="view" contentMode="scaleToFill" id="fNW-VP-mlG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oandmicon" translatesAutoresizingMaskIntoConstraints="NO" id="JbQ-MW-6tq">
+                                <rect key="frame" x="266" y="714" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Ako-Se-sJu"/>
+                                    <constraint firstAttribute="width" constant="128" id="zHe-mX-Mr2"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCx-0f-P9O">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <color key="backgroundColor" red="0.33066866639999998" green="0.118582416" blue="0.57703403559999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="eTe-O2-l8B"/>
+                                    <constraint firstAttribute="width" constant="240" id="oFG-0Z-a6J"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axG-9L-L2e">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="ouE-Vu-5Lo"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="q3V-9X-W8D"/>
+                                </constraints>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="pRH-1x-5mh" eventType="touchUpInside" id="Z06-vo-UD5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="bmW-EV-Yg9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bmW-EV-Yg9" firstAttribute="bottom" secondItem="JbQ-MW-6tq" secondAttribute="bottom" constant="20" id="GsY-m6-ZwF"/>
+                            <constraint firstItem="vCx-0f-P9O" firstAttribute="centerY" secondItem="fNW-VP-mlG" secondAttribute="centerY" id="L97-0T-wDC"/>
+                            <constraint firstItem="axG-9L-L2e" firstAttribute="centerY" secondItem="fNW-VP-mlG" secondAttribute="centerY" id="RUj-e1-wdN"/>
+                            <constraint firstItem="axG-9L-L2e" firstAttribute="centerX" secondItem="fNW-VP-mlG" secondAttribute="centerX" id="UuE-sq-41r"/>
+                            <constraint firstItem="bmW-EV-Yg9" firstAttribute="trailing" secondItem="JbQ-MW-6tq" secondAttribute="trailing" constant="20" id="vTU-w3-pZl"/>
+                            <constraint firstItem="vCx-0f-P9O" firstAttribute="centerX" secondItem="fNW-VP-mlG" secondAttribute="centerX" id="w63-Mu-Hw6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="frf-0h-Gfl"/>
                     <connections>
+                        <outlet property="circleView" destination="vCx-0f-P9O" id="y9E-g2-MdF"/>
+                        <outlet property="startButton" destination="axG-9L-L2e" id="EpL-I2-8Eo"/>
                         <segue destination="Mgf-8a-wIJ" kind="show" identifier="Share3" id="9uR-9u-0Ps"/>
                     </connections>
                 </viewController>
