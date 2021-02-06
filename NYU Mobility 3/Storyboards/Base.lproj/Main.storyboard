@@ -55,7 +55,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jAE-ms-lg6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5Ut-ty-kv1"/>
                             <constraint firstItem="jAE-ms-lg6" firstAttribute="top" secondItem="naD-Ic-mw2" secondAttribute="bottom" constant="50" id="ABZ-B8-y0n"/>
@@ -74,11 +74,62 @@
                         <outlet property="option1Button" destination="naD-Ic-mw2" id="KrH-n0-yOd"/>
                         <outlet property="option2Button" destination="jAE-ms-lg6" id="gtF-Sh-nNl"/>
                         <outlet property="option3Button" destination="4B4-UD-hpu" id="OfY-4x-1M5"/>
+                        <segue destination="kjU-c0-aFq" kind="show" identifier="Tracker2" id="yat-J4-411"/>
+                        <segue destination="pRH-1x-5mh" kind="show" identifier="Tracker3" id="68O-GJ-59P"/>
+                        <segue destination="Q2Q-JD-Xgd" kind="show" identifier="Tracker1" id="VwM-ts-lM9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-16" y="106"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2UU-e6-tyZ">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Q2Q-JD-Xgd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NHx-r5-LKr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UVU-nU-JbF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wwA-V3-Tup"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6AN-t5-PCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="-726"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dpb-az-d9b">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="kjU-c0-aFq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CJf-LH-fmE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="MTY-it-fai"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tv4-vd-CdN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3B-Ny-Cdy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="106"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="O7S-Mw-QzX">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="pRH-1x-5mh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fNW-VP-mlG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bmW-EV-Yg9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="frf-0h-Gfl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mvj-Rd-QLL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="948"/>
         </scene>
     </scenes>
     <resources>
