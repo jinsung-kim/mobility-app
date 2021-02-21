@@ -129,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6AN-t5-PCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2005.7971014492755" y="-603.34821428571422"/>
+            <point key="canvasLocation" x="2006" y="-624"/>
         </scene>
         <!--Tracker2 Controller-->
         <scene sceneID="dpb-az-d9b">
@@ -290,7 +290,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9uR-9u-0Ps"/>
+        <segue reference="mGm-4e-x3A"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="oandmicon" width="820" height="816"/>

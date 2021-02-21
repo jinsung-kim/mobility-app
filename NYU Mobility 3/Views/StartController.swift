@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import CoreMotion
+import CoreLocation
 
-class StartController: UIViewController {
+class StartController: UIViewController, CLLocationManagerDelegate {
+    
+    private let locationManager: CLLocationManager = CLLocationManager()
     
     // Redirects to the different versions
     @IBOutlet weak var option1Button: BubbleButton! // Video (Steps)
@@ -16,7 +20,12 @@ class StartController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getLocationPermission()
+    }
+    
+    func getLocationPermission() {
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
     }
     
     // Used to ensure that

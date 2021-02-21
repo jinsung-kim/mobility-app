@@ -28,8 +28,6 @@ class Tracker2Controller: UIViewController,
     var json: String = ""
     var json2: String = ""
     
-    // Movement tracking managers (copied from SpecialistTrackingController.swift)
-    
     // Used to track pedometer when saving data
     private var steps: Int32 = 0
     private var prevSteps: Int32 = 0
@@ -251,7 +249,7 @@ class Tracker2Controller: UIViewController,
         if (error != nil) {
             print("Error recording movie: \(error!.localizedDescription)")
         } else {
-            performSegue(withIdentifier: "ShareVideoTest", sender: outputURL!)
+            performSegue(withIdentifier: "Share2", sender: outputURL!)
         }
     }
     
