@@ -90,7 +90,6 @@ class Tracker3Controller: UIViewController,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ShareController
-//        vc.videoURL = outputURL
         vc.saved = saved
         vc.json = json
         vc.json2 = json2
@@ -180,6 +179,7 @@ class Tracker3Controller: UIViewController,
         stopAccel()
         stopUpdating()
         saveData(currTime: Date())
+        saved = safeTagGenerator()
         json = generateJSONString()
         json2 = generateJSON2String()
     }

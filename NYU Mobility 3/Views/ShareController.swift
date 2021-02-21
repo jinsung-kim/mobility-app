@@ -20,6 +20,8 @@ class ShareController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(json)
+        print(json2)
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {
