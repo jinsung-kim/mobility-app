@@ -48,7 +48,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ADx-Rw-ZI8"/>
                                 </constraints>
-                                <state key="normal" title="No Video (GPS + Steps)"/>
+                                <state key="normal" title="No Video (Steps + GPS)"/>
                                 <connections>
                                     <action selector="button3Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D6z-Ky-KPf"/>
                                 </connections>
@@ -290,7 +290,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mGm-4e-x3A"/>
+        <segue reference="9uR-9u-0Ps"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="oandmicon" width="820" height="816"/>
