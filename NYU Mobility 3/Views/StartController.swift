@@ -8,10 +8,13 @@
 import UIKit
 import CoreMotion
 import CoreLocation
+import HealthKit
 
 class StartController: UIViewController, CLLocationManagerDelegate {
     
     private let locationManager: CLLocationManager = CLLocationManager()
+    
+    let healthStore = HKHealthStore()
     
     // Redirects to the different versions
     @IBOutlet weak var option1Button: BubbleButton! // Video (Steps)
@@ -21,6 +24,9 @@ class StartController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocationPermission()
+        getStepCountPerDay(completion: { steps in
+            print(steps)
+        })
     }
     
     func getLocationPermission() {
@@ -75,7 +81,7 @@ class StartController: UIViewController, CLLocationManagerDelegate {
                                 { (input: String?) in
                                     self.save("email", input ?? "")
                                 })
-        } else { // if email is found -> tracking can be started
+        } else { // If email is found -> tracking can be started
             return true
         }
         return false
@@ -84,6 +90,46 @@ class StartController: UIViewController, CLLocationManagerDelegate {
     func save(_ key: String, _ value: String) {
         let defaults = UserDefaults.standard
         defaults.set(value, forKey: "\(key)")
+    }
+    
+    func getStepCountPerDay(completion: @escaping (_ count: Double) -> Void){
+
+        guard let sampleType = HKObjectType.quantityType(forIdentifier: .stepCount)
+            else {
+                return
+        }
+        
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.day = 1
+
+        var anchorComponents = calendar.dateComponents([.day, .month, .year], from: Date())
+        anchorComponents.hour = 0
+        let anchorDate = calendar.date(from: anchorComponents)
+
+        let stepsCumulativeQuery = HKStatisticsCollectionQuery(quantityType: sampleType, quantitySamplePredicate: nil, options: .cumulativeSum, anchorDate: anchorDate!, intervalComponents: dateComponents
+        )
+
+        // Set the results handler
+        stepsCumulativeQuery.initialResultsHandler = {query, results, error in
+            let endDate = Date()
+            let startDate = calendar.date(byAdding: .day, value: 0, to: endDate, wrappingComponents: false)
+            if let myResults = results {
+                myResults.enumerateStatistics(from: startDate!, to: endDate as Date) { statistics, stop in
+                    if let quantity = statistics.sumQuantity() {
+                        let date = statistics.startDate
+                        let steps = quantity.doubleValue(for: HKUnit.count())
+                        print("\(date): steps = \(steps)")
+                        completion(steps)
+                        // NOTE: If you are going to update the UI do it in the main thread
+                        DispatchQueue.main.async {
+                            // Update UI components
+                        }
+                    }
+                } // End block
+            } // End if let
+        }
+        HKHealthStore().execute(stepsCumulativeQuery)
     }
 }
 
