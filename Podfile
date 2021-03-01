@@ -6,5 +6,5 @@ target 'NYU Mobility 3' do
   use_frameworks!
 
   # Pods for NYU Mobility 3
-  pod 'LayoutHelper'
+#  pod 'LayoutHelper'
 end

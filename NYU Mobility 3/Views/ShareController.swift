@@ -20,8 +20,8 @@ class ShareController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(json)
-        print(json2)
+        // Sets navigation bar color as white
+        navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {

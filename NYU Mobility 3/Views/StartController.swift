@@ -20,6 +20,8 @@ class StartController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var option1Button: BubbleButton! // Video (Steps)
     @IBOutlet weak var option2Button: BubbleButton! // Video (Steps + GPS)
     @IBOutlet weak var option3Button: BubbleButton! // No Video
+    
+    var stepHistory: [Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,14 +102,14 @@ class StartController: UIViewController, CLLocationManagerDelegate {
 
         self.healthStore.requestAuthorization(toShare: [], read: [stepsCount]) { (success, error) in
             if success {
-                print("Permission accepted.")
+//                print("Permission accepted.")
                 self.getTodaySteps()
             }
             else {
                 if error != nil {
                     print(error ?? "")
                 }
-                print("Permission denied.")
+//                print("Permission denied.")
             }
         }
     }
@@ -147,10 +149,11 @@ class StartController: UIViewController, CLLocationManagerDelegate {
             from: startDate,
             to: endDate,
             with: { (result, stop) in
-                let totalStepForADay = result.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0
-                print(totalStepForADay)
+                let totalForDay = result.sumQuantity()?.doubleValue(for: HKUnit.count()) ?? 0
+                self.stepHistory.append(Int(totalForDay))
             }
           )
+            print(self.stepHistory)
         }
         healthStore.execute(query)
     }
