@@ -78,6 +78,7 @@
                         <segue destination="kjU-c0-aFq" kind="show" identifier="Tracker2" id="yat-J4-411"/>
                         <segue destination="pRH-1x-5mh" kind="show" identifier="Tracker3" id="68O-GJ-59P"/>
                         <segue destination="Q2Q-JD-Xgd" kind="show" identifier="Tracker1" id="VwM-ts-lM9"/>
+                        <segue destination="2sS-iy-AdJ" kind="show" identifier="SeeSteps" id="bvI-Wp-3yJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -209,6 +210,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbC-cU-JHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3347.826086956522" y="105.80357142857143"/>
+        </scene>
+        <!--Step History Controller-->
+        <scene sceneID="0Ab-Pf-feL">
+            <objects>
+                <viewController id="2sS-iy-AdJ" customClass="StepHistoryController" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YyP-Qs-SYe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="GbF-4p-x1E"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="P2w-gf-jue"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="De7-HN-Jak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893" y="991"/>
         </scene>
         <!--Tracker3 Controller-->
         <scene sceneID="O7S-Mw-QzX">

@@ -15,6 +15,7 @@
 		A149575525CE0718006BBFAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A149575325CE0718006BBFAC /* LaunchScreen.storyboard */; };
 		A149576925CE094C006BBFAC /* Gyro.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576825CE094C006BBFAC /* Gyro.swift */; };
 		A149576E25CE0972006BBFAC /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576D25CE0972006BBFAC /* Point.swift */; };
+		A17DC0C525F01D3300596B45 /* StepHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17DC0C425F01D3300596B45 /* StepHistoryController.swift */; };
 		A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9167E25CE0B6800D8D8D7 /* Colors.swift */; };
 		A1B9168325CE0B8E00D8D8D7 /* BubbleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */; };
 		A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */; };
@@ -25,6 +26,7 @@
 		A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */; };
 		A1B9169F25CE36E600D8D8D7 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9169E25CE36E600D8D8D7 /* Step.swift */; };
 		A1B916A225CE38E200D8D8D7 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B916A125CE38E200D8D8D7 /* ShareController.swift */; };
+		A1C483E225F1218A004E41D5 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C483E125F1218A004E41D5 /* LineChart.swift */; };
 		A1E94B3A25E96D430050EF24 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E94B3925E96D430050EF24 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,7 @@
 		A149575625CE0718006BBFAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A149576825CE094C006BBFAC /* Gyro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gyro.swift; sourceTree = "<group>"; };
 		A149576D25CE0972006BBFAC /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		A17DC0C425F01D3300596B45 /* StepHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepHistoryController.swift; sourceTree = "<group>"; };
 		A1B9167E25CE0B6800D8D8D7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextField.swift; sourceTree = "<group>"; };
 		A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker3Controller.swift; sourceTree = "<group>"; };
 		A1B9169E25CE36E600D8D8D7 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		A1B916A125CE38E200D8D8D7 /* ShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
+		A1C483E125F1218A004E41D5 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		A1E94B3825E96D420050EF24 /* NYU Mobility 3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NYU Mobility 3.entitlements"; sourceTree = "<group>"; };
 		A1E94B3925E96D430050EF24 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -134,6 +138,7 @@
 				A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */,
 				A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */,
 				A1B916A125CE38E200D8D8D7 /* ShareController.swift */,
+				A17DC0C425F01D3300596B45 /* StepHistoryController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				A149575125CE0718006BBFAC /* Assets.xcassets */,
 				A149574525CE0717006BBFAC /* AppDelegate.swift */,
 				A149574725CE0717006BBFAC /* SceneDelegate.swift */,
+				A1C483E125F1218A004E41D5 /* LineChart.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -237,12 +243,14 @@
 			files = (
 				A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */,
 				A149575025CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld in Sources */,
+				A1C483E225F1218A004E41D5 /* LineChart.swift in Sources */,
 				A1B9168D25CE111400D8D8D7 /* StartController.swift in Sources */,
 				A1B916A225CE38E200D8D8D7 /* ShareController.swift in Sources */,
 				A1B9169F25CE36E600D8D8D7 /* Step.swift in Sources */,
 				A149576E25CE0972006BBFAC /* Point.swift in Sources */,
 				A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */,
 				A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */,
+				A17DC0C525F01D3300596B45 /* StepHistoryController.swift in Sources */,
 				A1B9169925CE294900D8D8D7 /* Tracker2Controller.swift in Sources */,
 				A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */,
 				A1B9169625CE28BC00D8D8D7 /* Tracker1Controller.swift in Sources */,

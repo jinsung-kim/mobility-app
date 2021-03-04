@@ -141,9 +141,24 @@ class Tracker2Controller: UIViewController,
     
     func videoQueue() -> DispatchQueue { return DispatchQueue.main }
     
-    /// Only allows portrait mode
     func currentVideoOrientation() -> AVCaptureVideoOrientation {
-        return AVCaptureVideoOrientation.portrait
+        let currentDevice: UIDevice = UIDevice.current
+        let orientation: UIDeviceOrientation = currentDevice.orientation
+        
+        switch (orientation) {
+        case .portrait:
+            return AVCaptureVideoOrientation.portrait
+        case .landscapeRight:
+            return AVCaptureVideoOrientation.landscapeRight
+        case .landscapeLeft:
+            return AVCaptureVideoOrientation.landscapeLeft
+//        case .portraitUpsideDown:
+//            return AVCaptureVideoOrientation.portraitUpsideDown
+
+        default:
+            return AVCaptureVideoOrientation.portrait
+        }
+//        return AVCaptureVideoOrientation.portrait
     }
     
     @objc func startCapture() {
