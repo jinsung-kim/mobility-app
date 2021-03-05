@@ -17,13 +17,17 @@ class StepHistoryController: UIViewController, LineChartDelegate {
     var label = UILabel()
     var lineChart: LineChart!
     
+    // Future: Add labels for averages for the last week
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getHealthKitPermission() { res in
             DispatchQueue.main.async {
-                if (res.count == 8) {
-                    self.addChart(res)
-                }
+                // Can only alter the chart in the main thread
+                // as it relies on views + label
+                self.addChart(res)
+                
+                // A function to use res to find the averages
             }
         }
     }
@@ -37,16 +41,13 @@ class StepHistoryController: UIViewController, LineChartDelegate {
         self.view.addSubview(label)
         views["label"] = label
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-80-[label]", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-100-[label]", options: [], metrics: nil, views: views))
         
         var data: [CGFloat] = []
         
         for index in 0 ..< val.count where index != 0 {
             data.append(val[index])
         }
-        
-        // Simple line with custom x axis labels
-//        let xLabels: [String] = ["1", "2", "3", "4", "5", "6", "7"]
         
         lineChart = LineChart()
         lineChart.animation.enabled = true
@@ -64,6 +65,7 @@ class StepHistoryController: UIViewController, LineChartDelegate {
         views["chart"] = lineChart
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[chart]-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
+        
     }
     
     func getHealthKitPermission(completion: @escaping ([CGFloat]) -> Void) {
@@ -139,16 +141,15 @@ class StepHistoryController: UIViewController, LineChartDelegate {
     }
     
     func didSelectDataPoint(_ x: CGFloat, yValues: [CGFloat]) {
+        // Precondition - There are no negative values
         let steps: Int = Int(yValues[0])
         label.textColor = UIColor.black
         
         // Number of steps for the label
-        if (steps == 0) {
+        if (steps != 1) {
             label.text = "\(steps) steps"
-        } else if (steps == 1) {
-            label.text = "\(steps) step"
         } else {
-            label.text = "\(steps) steps"
+            label.text = "\(steps) step"
         }
     }
     
