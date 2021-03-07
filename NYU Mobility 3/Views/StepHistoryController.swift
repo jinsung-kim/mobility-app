@@ -41,7 +41,7 @@ class StepHistoryController: UIViewController, LineChartDelegate {
         self.view.addSubview(label)
         views["label"] = label
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[label]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-100-[label]", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[label]", options: [], metrics: nil, views: views))
         
         var data: [CGFloat] = []
         
@@ -64,7 +64,7 @@ class StepHistoryController: UIViewController, LineChartDelegate {
         self.view.addSubview(lineChart)
         views["chart"] = lineChart
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[chart]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[label]-5-[chart(==200)]", options: [], metrics: nil, views: views))
         
     }
     

@@ -55,8 +55,8 @@ open class LineChart: UIView {
     
     public struct Axis {
         public var visible: Bool = true
-        // #607d8b
-        public var color: UIColor = UIColor(red: 96/255.0, green: 125/255.0, blue: 139/255.0, alpha: 1)
+        // #875aa6
+        public var color: UIColor = UIColor(red: 135/255.0, green: 90/255.0, blue: 166/255.0, alpha: 1)
         public var inset: CGFloat = 15
     }
     
@@ -128,7 +128,7 @@ open class LineChart: UIView {
     
     // category10 colors from d3 - https://github.com/mbostock/d3/wiki/Ordinal-Scales
     open var colors: [UIColor] = [
-        UIColor(red: 0.121569, green: 0.466667, blue: 0.705882, alpha: 1),
+        UIColor(red: 0.6157, green: 0, blue: 0.7686, alpha: 1.0) /* #9d00c4 */,
         UIColor(red: 1, green: 0.498039, blue: 0.054902, alpha: 1),
         UIColor(red: 0.172549, green: 0.627451, blue: 0.172549, alpha: 1),
         UIColor(red: 0.839216, green: 0.152941, blue: 0.156863, alpha: 1),
