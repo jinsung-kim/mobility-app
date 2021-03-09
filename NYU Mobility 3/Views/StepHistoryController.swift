@@ -20,6 +20,7 @@ class StepHistoryController: UIViewController, LineChartDelegate {
     // Future: Add labels for averages for the last week
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         getHealthKitPermission() { res in
             DispatchQueue.main.async {
@@ -45,18 +46,25 @@ class StepHistoryController: UIViewController, LineChartDelegate {
         
         var data: [CGFloat] = []
         
-        for index in 0 ..< val.count where index != 0 {
+        for index in 0 ..< val.count - 1 {
             data.append(val[index])
         }
+        
+        data.reverse()
+        
+        let xLabel = Date.getDates(forLastNDays: 7)
+        
+        print(data)
+        print(xLabel)
         
         lineChart = LineChart()
         lineChart.animation.enabled = true
         lineChart.area = true
         lineChart.x.labels.visible = true
+        lineChart.x.labels.values = xLabel
         lineChart.x.grid.count = 5
         lineChart.y.grid.count = 5
-//        lineChart.x.labels.values = xLabels
-        lineChart.y.labels.visible = true
+        lineChart.y.labels.visible = false
         lineChart.addLine(data)
         
         lineChart.translatesAutoresizingMaskIntoConstraints = false
@@ -158,5 +166,27 @@ class StepHistoryController: UIViewController, LineChartDelegate {
         if let chart = lineChart {
             chart.setNeedsDisplay()
         }
+    }
+}
+
+// Used for x labels for each date
+extension Date {
+    static func getDates(forLastNDays nDays: Int) -> [String] {
+        let cal = NSCalendar.current
+        // Start with today
+        var date = cal.startOfDay(for: Date())
+
+        var arrDates = [String]()
+
+        for _ in 1 ... nDays {
+            // Move back in time by one day:
+            date = cal.date(byAdding: Calendar.Component.day, value: -1, to: date)!
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd"
+            let dateString = dateFormatter.string(from: date)
+            arrDates.append(dateString)
+        }
+        return arrDates
     }
 }

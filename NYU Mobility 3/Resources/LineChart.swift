@@ -4,7 +4,7 @@
 //
 //  Created by Jin Kim on 3/4/21.
 // https://github.com/zemirco/swift-linechart
-// MIT License -> Permitted to be borrowed/copied
+// MIT License -> Permitted to be borrowed/copied freely
 
 import UIKit
 import QuartzCore
@@ -96,7 +96,6 @@ open class LineChart: UIView {
     open var x: Coordinate = Coordinate()
     open var y: Coordinate = Coordinate()
 
-    
     // values calculated on init
     fileprivate var drawingHeight: CGFloat = 0 {
         didSet {
@@ -488,6 +487,7 @@ open class LineChart: UIView {
                 text = String(index)
             }
             label.text = text
+            label.textColor = UIColor.black
             self.addSubview(label)
         }
     }
