@@ -56,11 +56,20 @@ class Tracker1Controller: UIViewController,
         // Screen will not go to sleep with this line below
         UIApplication.shared.isIdleTimerDisabled = true
         
+    }
+    
+    override func viewDidLayoutSubviews() {
         if (setupSession()) {
             setupPreview()
             startSession()
         }
         setupButton()
+        
+        if let connection = self.previewLayer?.connection {
+            if (connection.isVideoOrientationSupported) {
+                connection.videoOrientation = currentVideoOrientation()
+            }
+        }
     }
     
     /// Sets up the camera button used to start recording/stop recording
@@ -134,14 +143,14 @@ class Tracker1Controller: UIViewController,
     func currentVideoOrientation() -> AVCaptureVideoOrientation {
         let currentDevice: UIDevice = UIDevice.current
         let orientation: UIDeviceOrientation = currentDevice.orientation
-        
+
         switch (orientation) {
         case .portrait:
             return AVCaptureVideoOrientation.portrait
         case .landscapeRight:
-            return AVCaptureVideoOrientation.landscapeRight
-        case .landscapeLeft:
             return AVCaptureVideoOrientation.landscapeLeft
+        case .landscapeLeft:
+            return AVCaptureVideoOrientation.landscapeRight
 //        case .portraitUpsideDown:
 //            return AVCaptureVideoOrientation.portraitUpsideDown
 
