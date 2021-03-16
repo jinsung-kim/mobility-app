@@ -52,6 +52,8 @@ class StepHistoryController: UIViewController, LineChartDelegate {
         
         data.reverse()
         
+        let _ = data.popLast()
+        
         let xLabel = Date.getDates(forLastNDays: 7)
         
         print(data)
@@ -61,7 +63,13 @@ class StepHistoryController: UIViewController, LineChartDelegate {
         lineChart.animation.enabled = true
         lineChart.area = true
         lineChart.x.labels.visible = true
-        lineChart.x.labels.values = xLabel
+        
+        // If for whatever reason, the x labels do not match the y label points
+        // Simply skip the x labels
+        if (xLabel.count == data.count) {
+            lineChart.x.labels.values = xLabel
+        }
+        
         lineChart.x.grid.count = 5
         lineChart.y.grid.count = 5
         lineChart.y.labels.visible = false
