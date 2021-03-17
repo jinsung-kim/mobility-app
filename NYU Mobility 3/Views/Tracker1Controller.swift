@@ -14,7 +14,7 @@ class Tracker1Controller: UIViewController,
                           AVCaptureFileOutputRecordingDelegate {
     
     @IBOutlet weak var camPreview: UIView!
-    @IBOutlet weak var cameraButton: UIView!
+    @IBOutlet weak var camButton: UIButton!
     
     let captureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
@@ -56,34 +56,19 @@ class Tracker1Controller: UIViewController,
         // Screen will not go to sleep with this line below
         UIApplication.shared.isIdleTimerDisabled = true
         
-    }
-    
-    override func viewDidLayoutSubviews() {
         if (setupSession()) {
             setupPreview()
             startSession()
         }
-        setupButton()
         
-        if let connection = self.previewLayer?.connection {
-            if (connection.isVideoOrientationSupported) {
-                connection.videoOrientation = currentVideoOrientation()
-            }
-        }
     }
     
-    /// Sets up the camera button used to start recording/stop recording
-    func setupButton() {
-        cameraButton.isUserInteractionEnabled = true
-        let cameraButtonRecognizer = UITapGestureRecognizer(target: self,
-                                                            action: #selector(Tracker1Controller.startCapture))
-        cameraButton.addGestureRecognizer(cameraButtonRecognizer)
-        cameraButton.backgroundColor = UIColor.white // button is white when initialized
-        cameraButton.layer.cornerRadius = 30 // button round
-        cameraButton.layer.masksToBounds = true
-        
-        camPreview.addSubview(cameraButton)
-    }
+//    override func viewDidLayoutSubviews() {
+//        if (setupSession()) {
+//            setupPreview()
+//            startSession()
+//        }
+//    }
     
     /// Sets up the camera view (which will start recording)
     func setupPreview() {
@@ -141,26 +126,26 @@ class Tracker1Controller: UIViewController,
     
     /// Directional
     func currentVideoOrientation() -> AVCaptureVideoOrientation {
-        let currentDevice: UIDevice = UIDevice.current
-        let orientation: UIDeviceOrientation = currentDevice.orientation
-
-        switch (orientation) {
-        case .portrait:
-            return AVCaptureVideoOrientation.portrait
-        case .landscapeRight:
-            return AVCaptureVideoOrientation.landscapeLeft
-        case .landscapeLeft:
-            return AVCaptureVideoOrientation.landscapeRight
-//        case .portraitUpsideDown:
-//            return AVCaptureVideoOrientation.portraitUpsideDown
-
-        default:
-            return AVCaptureVideoOrientation.portrait
-        }
-//        return AVCaptureVideoOrientation.portrait
+//        let currentDevice: UIDevice = UIDevice.current
+//        let orientation: UIDeviceOrientation = currentDevice.orientation
+//
+//        switch (orientation) {
+//        case .portrait:
+//            return AVCaptureVideoOrientation.portrait
+//        case .landscapeRight:
+//            return AVCaptureVideoOrientation.landscapeLeft
+//        case .landscapeLeft:
+//            return AVCaptureVideoOrientation.landscapeRight
+////        case .portraitUpsideDown:
+////            return AVCaptureVideoOrientation.portraitUpsideDown
+//
+//        default:
+//            return AVCaptureVideoOrientation.portrait
+//        }
+        return AVCaptureVideoOrientation.portrait
     }
     
-    @objc func startCapture() {
+    @IBAction func buttonPressed(_ sender: Any) {
         startRecording()
     }
     
@@ -211,7 +196,7 @@ class Tracker1Controller: UIViewController,
     func startRecording() {
         
         if (movieOutput.isRecording == false) {
-            cameraButton.backgroundColor = UIColor.red
+            camButton.tintColor = UIColor.red
             
             startTracking()
             startTime = Date()
@@ -247,7 +232,7 @@ class Tracker1Controller: UIViewController,
     
     func stopRecording() {
         if (movieOutput.isRecording == true) {
-            cameraButton.backgroundColor = UIColor.white
+            camButton.tintColor = UIColor.white
             movieOutput.stopRecording()
             stopTracking()
             clearData()

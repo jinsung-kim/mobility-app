@@ -16,7 +16,7 @@ class Tracker2Controller: UIViewController,
                           CLLocationManagerDelegate {
     
     @IBOutlet weak var camPreview: UIView!
-    @IBOutlet weak var cameraButton: UIView!
+    @IBOutlet weak var camButton: UIButton!
     
     let captureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
@@ -65,27 +65,26 @@ class Tracker2Controller: UIViewController,
         // Screen will not go to sleep with this line below
         UIApplication.shared.isIdleTimerDisabled = true
         
-        // Instructions Page Redirect setup
         getLocationPermission()
         
         if (setupSession()) {
             setupPreview()
             startSession()
         }
-        setupButton()
+//        setupButton() // -> Now using actual UIButton for accessibility reasons
     }
     
     /// Sets up the camera button used to start recording/stop recording
-    func setupButton() {
-        cameraButton.isUserInteractionEnabled = true
-        let cameraButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(Tracker2Controller.startCapture))
-        cameraButton.addGestureRecognizer(cameraButtonRecognizer)
-        cameraButton.backgroundColor = UIColor.white // button is white when initialized
-        cameraButton.layer.cornerRadius = 30 // button round
-        cameraButton.layer.masksToBounds = true
-        
-        camPreview.addSubview(cameraButton)
-    }
+//    func setupButton() {
+//        cameraButton.isUserInteractionEnabled = true
+//        let cameraButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(Tracker2Controller.startCapture))
+//        cameraButton.addGestureRecognizer(cameraButtonRecognizer)
+//        cameraButton.backgroundColor = UIColor.white // button is white when initialized
+//        cameraButton.layer.cornerRadius = 30 // button round
+//        cameraButton.layer.masksToBounds = true
+//
+//        camPreview.addSubview(cameraButton)
+//    }
     
     /// Sets up the camera view (which will start recording)
     func setupPreview() {
@@ -141,27 +140,32 @@ class Tracker2Controller: UIViewController,
     
     func videoQueue() -> DispatchQueue { return DispatchQueue.main }
     
+    /// Used to distinguish what direction the phone
     func currentVideoOrientation() -> AVCaptureVideoOrientation {
-        let currentDevice: UIDevice = UIDevice.current
-        let orientation: UIDeviceOrientation = currentDevice.orientation
-        
-        switch (orientation) {
-        case .portrait:
-            return AVCaptureVideoOrientation.portrait
-        case .landscapeRight:
-            return AVCaptureVideoOrientation.landscapeRight
-        case .landscapeLeft:
-            return AVCaptureVideoOrientation.landscapeLeft
+//        let currentDevice: UIDevice = UIDevice.current
+//        let orientation: UIDeviceOrientation = currentDevice.orientation
+//
+//        switch (orientation) {
+//        case .portrait:
+//            return AVCaptureVideoOrientation.portrait
+//        case .landscapeRight:
+//            return AVCaptureVideoOrientation.landscapeRight
+//        case .landscapeLeft:
+//            return AVCaptureVideoOrientation.landscapeLeft
 //        case .portraitUpsideDown:
 //            return AVCaptureVideoOrientation.portraitUpsideDown
-
-        default:
-            return AVCaptureVideoOrientation.portrait
-        }
-//        return AVCaptureVideoOrientation.portrait
+//
+//        default:
+//            return AVCaptureVideoOrientation.portrait
+//        }
+        return AVCaptureVideoOrientation.portrait
     }
     
-    @objc func startCapture() {
+//    @objc func startCapture() {
+//        startRecording()
+//    }
+    
+    @IBAction func buttonPressed(_ sender: Any) {
         startRecording()
     }
     
@@ -212,7 +216,7 @@ class Tracker2Controller: UIViewController,
     func startRecording() {
         
         if (movieOutput.isRecording == false) {
-            cameraButton.backgroundColor = UIColor.red
+            camButton.tintColor = UIColor.red
             
             startTracking()
             startTime = Date()
@@ -248,7 +252,7 @@ class Tracker2Controller: UIViewController,
     
     func stopRecording() {
         if (movieOutput.isRecording == true) {
-            cameraButton.backgroundColor = UIColor.white
+            camButton.tintColor = UIColor.white
             movieOutput.stopRecording()
             stopTracking()
             clearData()

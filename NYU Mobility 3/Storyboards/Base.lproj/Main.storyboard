@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -95,22 +96,22 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uw4-QP-emR">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nq1-fb-DRz">
-                                        <rect key="frame" x="177" y="776" width="60" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="Gde-hr-V3d"/>
-                                            <constraint firstAttribute="height" constant="60" id="s0X-SV-TvR"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="nq1-fb-DRz" firstAttribute="centerX" secondItem="Uw4-QP-emR" secondAttribute="centerX" id="CHh-Fs-sN9"/>
-                                    <constraint firstAttribute="bottom" secondItem="nq1-fb-DRz" secondAttribute="bottom" constant="60" id="UkM-Bn-mgm"/>
-                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIF-jg-B2T">
+                                <rect key="frame" x="177" y="752" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="eKf-Ll-s2o"/>
+                                    <constraint firstAttribute="width" constant="60" id="gli-y6-lj5"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="circle.fill" catalog="system" renderingMode="template"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Q2Q-JD-Xgd" eventType="touchUpInside" id="JSx-ac-Q8L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UVU-nU-JbF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -118,13 +119,15 @@
                             <constraint firstItem="Uw4-QP-emR" firstAttribute="top" secondItem="NHx-r5-LKr" secondAttribute="top" id="37Q-DH-NSB"/>
                             <constraint firstItem="Uw4-QP-emR" firstAttribute="leading" secondItem="UVU-nU-JbF" secondAttribute="leading" id="3Ke-KQ-i3e"/>
                             <constraint firstAttribute="bottom" secondItem="Uw4-QP-emR" secondAttribute="bottom" id="box-fe-Rgc"/>
+                            <constraint firstItem="WIF-jg-B2T" firstAttribute="centerX" secondItem="NHx-r5-LKr" secondAttribute="centerX" id="dWo-T2-DuH"/>
                             <constraint firstItem="UVU-nU-JbF" firstAttribute="trailing" secondItem="Uw4-QP-emR" secondAttribute="trailing" id="j7g-kx-31D"/>
+                            <constraint firstItem="UVU-nU-JbF" firstAttribute="bottom" secondItem="WIF-jg-B2T" secondAttribute="bottom" constant="50" id="ySA-5z-xPW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wwA-V3-Tup"/>
                     <connections>
+                        <outlet property="camButton" destination="WIF-jg-B2T" id="h6i-oz-fpY"/>
                         <outlet property="camPreview" destination="Uw4-QP-emR" id="VeG-UL-mPj"/>
-                        <outlet property="cameraButton" destination="nq1-fb-DRz" id="Ghl-CQ-aNh"/>
                         <segue destination="Mgf-8a-wIJ" kind="show" identifier="Share1" id="mGm-4e-x3A"/>
                     </connections>
                 </viewController>
@@ -142,22 +145,23 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3af-wL-qX4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfw-yy-ROI">
-                                        <rect key="frame" x="177" y="776" width="60" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="6nT-Lh-XAk"/>
-                                            <constraint firstAttribute="width" constant="60" id="zCZ-CS-qnO"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="hfw-yy-ROI" firstAttribute="centerX" secondItem="3af-wL-qX4" secondAttribute="centerX" id="0K7-wa-jz5"/>
-                                    <constraint firstAttribute="bottom" secondItem="hfw-yy-ROI" secondAttribute="bottom" constant="60" id="ZEi-AN-sG1"/>
-                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w86-8U-w3O">
+                                <rect key="frame" x="177" y="752" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2Gi-g0-zB5"/>
+                                    <constraint firstAttribute="width" constant="60" id="exG-sd-RoG"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="circle.fill" catalog="system" symbolScale="default" renderingMode="template"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="kjU-c0-aFq" eventType="touchUpInside" id="a7W-35-kKH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MTY-it-fai"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -165,13 +169,15 @@
                             <constraint firstItem="3af-wL-qX4" firstAttribute="trailing" secondItem="MTY-it-fai" secondAttribute="trailing" id="GwC-Rp-gih"/>
                             <constraint firstAttribute="bottom" secondItem="3af-wL-qX4" secondAttribute="bottom" id="QPD-aT-s90"/>
                             <constraint firstItem="3af-wL-qX4" firstAttribute="leading" secondItem="MTY-it-fai" secondAttribute="leading" id="SgF-LU-tV5"/>
+                            <constraint firstItem="MTY-it-fai" firstAttribute="bottom" secondItem="w86-8U-w3O" secondAttribute="bottom" constant="50" id="k0L-hi-POB"/>
+                            <constraint firstItem="w86-8U-w3O" firstAttribute="centerX" secondItem="CJf-LH-fmE" secondAttribute="centerX" id="mtv-LF-OLs"/>
                             <constraint firstItem="3af-wL-qX4" firstAttribute="top" secondItem="CJf-LH-fmE" secondAttribute="top" id="qk9-vI-yJS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Tv4-vd-CdN"/>
                     <connections>
+                        <outlet property="camButton" destination="w86-8U-w3O" id="Vcm-dv-jzR"/>
                         <outlet property="camPreview" destination="3af-wL-qX4" id="6Ft-f3-EDP"/>
-                        <outlet property="cameraButton" destination="hfw-yy-ROI" id="0xG-9C-i0e"/>
                         <segue destination="Mgf-8a-wIJ" kind="show" identifier="Share2" id="haz-r4-DHj"/>
                     </connections>
                 </viewController>
@@ -307,9 +313,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9uR-9u-0Ps"/>
+        <segue reference="haz-r4-DHj"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="oandmicon" width="820" height="816"/>
         <image name="share" width="304" height="394"/>
         <systemColor name="systemBackgroundColor">
