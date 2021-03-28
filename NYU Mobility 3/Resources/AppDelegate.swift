@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          VARIABLE USES:
          email: used within the file name as identification
          */
-        let defaultValue = ["email" : ""] as [String : Any]
+        let defaultValue = ["email" : "", "voiceover": false] as [String : Any]
+        
         defaults.register(defaults: defaultValue)
         
         return true
