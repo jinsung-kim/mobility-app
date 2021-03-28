@@ -8,6 +8,7 @@
 import UIKit
 import CoreMotion
 import CoreLocation
+import AVFoundation
 
 class StartController: UIViewController, CLLocationManagerDelegate {
     
@@ -17,6 +18,8 @@ class StartController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var option1Button: BubbleButton! // Video (Steps)
     @IBOutlet weak var option2Button: BubbleButton! // Video (Steps + GPS)
     @IBOutlet weak var option3Button: BubbleButton! // No Video
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,18 +54,21 @@ class StartController: UIViewController, CLLocationManagerDelegate {
     // Registers button clicks + validates + redirects
     @IBAction func button1Pressed(_ sender: Any) {
         if (validateEmail()) {
+            speakMessage("Video with just steps")
             performSegue(withIdentifier: "Tracker1", sender: self)
         }
     }
     
     @IBAction func button2Pressed(_ sender: Any) {
         if (validateEmail()) {
+            speakMessage("Video with steps and GPS")
             performSegue(withIdentifier: "Tracker2", sender: self)
         }
     }
     
     @IBAction func button3Pressed(_ sender: Any) {
         if (validateEmail()) {
+            speakMessage("No Video")
             performSegue(withIdentifier: "Tracker3", sender: self)
         }
     }
@@ -91,8 +97,19 @@ class StartController: UIViewController, CLLocationManagerDelegate {
     }
     
     func save(_ key: String, _ value: String) {
-        let defaults = UserDefaults.standard
         defaults.set(value, forKey: "\(key)")
+    }
+    
+    // Accessibility (Sound) Features
+    func speakMessage(_ message: String) {
+        let voiceover: Bool = defaults.bool(forKey: "voiceover")
+        if voiceover {
+            let utterance = AVSpeechUtterance(string: message)
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+
+            let synth = AVSpeechSynthesizer()
+            synth.speak(utterance)
+        }
     }
 }
 
