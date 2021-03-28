@@ -25,11 +25,11 @@ class StartController: UIViewController, CLLocationManagerDelegate {
     }
     
     func addButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Step History", style: .done, target: self, action: #selector(self.rightClick(sender:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Settings", style: .done, target: self, action: #selector(self.rightClick(sender:)))
     }
     
     @objc func rightClick(sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: "SeeSteps", sender: self)
+        self.performSegue(withIdentifier: "GoToSettings", sender: self)
     }
     
     func getLocationPermission() {

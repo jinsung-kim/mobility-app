@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10AE4CB2610D1A6004BB906 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AE4CA2610D1A6004BB906 /* SettingsController.swift */; };
 		A149574625CE0717006BBFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574525CE0717006BBFAC /* AppDelegate.swift */; };
 		A149574825CE0717006BBFAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574725CE0717006BBFAC /* SceneDelegate.swift */; };
 		A149574D25CE0717006BBFAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A149574B25CE0717006BBFAC /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10AE4CA2610D1A6004BB906 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		A149574225CE0717006BBFAC /* NYU Mobility 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYU Mobility 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A149574525CE0717006BBFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A149574725CE0717006BBFAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,16 @@
 				A1E94B3925E96D430050EF24 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A10AE4C92610D18F004BB906 /* Trackers */ = {
+			isa = PBXGroup;
+			children = (
+				A1B9169525CE28BC00D8D8D7 /* Tracker1Controller.swift */,
+				A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */,
+				A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */,
+			);
+			path = Trackers;
 			sourceTree = "<group>";
 		};
 		A149573925CE0717006BBFAC = {
@@ -133,12 +145,11 @@
 		A149576425CE08C9006BBFAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A10AE4C92610D18F004BB906 /* Trackers */,
 				A1B9168C25CE111400D8D8D7 /* StartController.swift */,
-				A1B9169525CE28BC00D8D8D7 /* Tracker1Controller.swift */,
-				A1B9169825CE294900D8D8D7 /* Tracker2Controller.swift */,
-				A1B9169B25CE295C00D8D8D7 /* Tracker3Controller.swift */,
 				A1B916A125CE38E200D8D8D7 /* ShareController.swift */,
 				A17DC0C425F01D3300596B45 /* StepHistoryController.swift */,
+				A10AE4CA2610D1A6004BB906 /* SettingsController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10AE4CB2610D1A6004BB906 /* SettingsController.swift in Sources */,
 				A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */,
 				A149575025CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld in Sources */,
 				A1C483E225F1218A004E41D5 /* LineChart.swift in Sources */,
