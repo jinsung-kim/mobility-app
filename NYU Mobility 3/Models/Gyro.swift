@@ -20,7 +20,8 @@ public struct Gyro: Codable { // Without 'Codable', it will not turn into a JSON
     }
     
     func convertToDictionary2() -> [String : Any] {
-        let dic: [String: Any] = ["time": self.time, "gyroData": self.gyroData,
+        let dic: [String: Any] = ["time": self.time,
+                                  "gyroData": self.gyroData,
                                   "accelData": self.accelData]
         return dic
     }

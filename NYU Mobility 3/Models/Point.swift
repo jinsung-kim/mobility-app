@@ -34,10 +34,15 @@ public struct Point: Codable { // Without 'Codable', it will not turn into a JSO
     }
     
     func convertToDictionary() -> [String : Any] {
-        let dic: [String: Any] = ["time": self.time, "steps": self.steps, "currSteps": self.currSteps,
-                                  "distance": self.distance, "currDistance": self.currDistance,
-                                  "coordinates": self.coordinates, "avgPace": self.avgPace,
-                                  "currPace": self.currPace, "currCad": self.currCad]
+        let dic: [String: Any] = ["time": self.time,
+                                  "steps": self.steps,
+                                  "currSteps": self.currSteps,
+                                  "distance": self.distance,
+                                  "currDistance": self.currDistance,
+                                  "coordinates": self.coordinates,
+                                  "avgPace": self.avgPace,
+                                  "currPace": self.currPace,
+                                  "currCad": self.currCad]
         return dic
     }
 }

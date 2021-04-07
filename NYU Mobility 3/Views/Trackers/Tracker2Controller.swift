@@ -59,6 +59,8 @@ class Tracker2Controller: UIViewController,
     private var avgPace: Double = 0.0
     private var currCad: Double = 0.0
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,20 +73,19 @@ class Tracker2Controller: UIViewController,
             setupPreview()
             startSession()
         }
-//        setupButton() // -> Now using actual UIButton for accessibility reasons
     }
     
-    /// Sets up the camera button used to start recording/stop recording
-//    func setupButton() {
-//        cameraButton.isUserInteractionEnabled = true
-//        let cameraButtonRecognizer = UITapGestureRecognizer(target: self, action: #selector(Tracker2Controller.startCapture))
-//        cameraButton.addGestureRecognizer(cameraButtonRecognizer)
-//        cameraButton.backgroundColor = UIColor.white // button is white when initialized
-//        cameraButton.layer.cornerRadius = 30 // button round
-//        cameraButton.layer.masksToBounds = true
-//
-//        camPreview.addSubview(cameraButton)
-//    }
+    // Accessibility (Sound) Features
+    func speakMessage(_ message: String) {
+        let voiceover: Bool = defaults.bool(forKey: "voiceover")
+        if voiceover {
+            let utterance = AVSpeechUtterance(string: message)
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+
+            let synth = AVSpeechSynthesizer()
+            synth.speak(utterance)
+        }
+    }
     
     /// Sets up the camera view (which will start recording)
     func setupPreview() {
@@ -161,10 +162,6 @@ class Tracker2Controller: UIViewController,
         return AVCaptureVideoOrientation.portrait
     }
     
-//    @objc func startCapture() {
-//        startRecording()
-//    }
-    
     @IBAction func buttonPressed(_ sender: Any) {
         startRecording()
     }
@@ -216,6 +213,7 @@ class Tracker2Controller: UIViewController,
     func startRecording() {
         
         if (movieOutput.isRecording == false) {
+            speakMessage("Started recording")
             camButton.tintColor = UIColor.red
             
             startTracking()
@@ -247,6 +245,7 @@ class Tracker2Controller: UIViewController,
             
         } else {
             stopRecording()
+            speakMessage("Stopped recording")
         }
     }
     

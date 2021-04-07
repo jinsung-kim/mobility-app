@@ -25,14 +25,29 @@ class StartController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         getLocationPermission()
         addButton()
+        addButton2()
     }
     
     func addButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Settings", style: .done, target: self, action: #selector(self.rightClick(sender:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Settings",
+                                                                      style: .done,
+                                                                      target: self,
+                                                                      action: #selector(self.rightClick(sender:)))
+    }
+    
+    func addButton2() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Debug",
+                                                                     style: .done,
+                                                                     target: self,
+                                                                     action: #selector(self.leftClick(sender:)))
     }
     
     @objc func rightClick(sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "GoToSettings", sender: self)
+    }
+    
+    @objc func leftClick(sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "ToDebug", sender: self)
     }
     
     func getLocationPermission() {

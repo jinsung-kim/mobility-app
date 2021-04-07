@@ -50,6 +50,8 @@ class Tracker1Controller: UIViewController,
     private var avgPace: Double = 0.0
     private var currCad: Double = 0.0
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,12 +65,17 @@ class Tracker1Controller: UIViewController,
         
     }
     
-//    override func viewDidLayoutSubviews() {
-//        if (setupSession()) {
-//            setupPreview()
-//            startSession()
-//        }
-//    }
+    // Accessibility (Sound) Features
+    func speakMessage(_ message: String) {
+        let voiceover: Bool = defaults.bool(forKey: "voiceover")
+        if voiceover {
+            let utterance = AVSpeechUtterance(string: message)
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+
+            let synth = AVSpeechSynthesizer()
+            synth.speak(utterance)
+        }
+    }
     
     /// Sets up the camera view (which will start recording)
     func setupPreview() {
@@ -196,6 +203,7 @@ class Tracker1Controller: UIViewController,
     func startRecording() {
         
         if (movieOutput.isRecording == false) {
+            speakMessage("Started Recording")
             camButton.tintColor = UIColor.red
             
             startTracking()
@@ -227,6 +235,7 @@ class Tracker1Controller: UIViewController,
             
         } else {
             stopRecording()
+            speakMessage("Stopped Recording")
         }
     }
     

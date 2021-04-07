@@ -3,8 +3,8 @@
 //  NYU Mobility 3
 //
 //  Created by Jin Kim on 3/4/21.
-// https://github.com/zemirco/swift-linechart
-// MIT License -> Permitted to be borrowed/copied freely
+//  https://github.com/zemirco/swift-linechart
+//  MIT License -> Permitted to be borrowed/copied freely
 
 import UIKit
 import QuartzCore

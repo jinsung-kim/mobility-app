@@ -28,8 +28,12 @@ public struct Step: Codable { // Without 'Codable', it will not turn into a JSON
     
     // Called in actual tracking areas
     func convertToDictionary() -> [String : Any] {
-        let dic: [String: Any] = ["time": self.time, "steps": self.steps, "currSteps": self.currSteps,
-                                  "avgPace": self.avgPace, "currPace": self.currPace, "currCad": self.currCad]
+        let dic: [String: Any] = ["time": self.time,
+                                  "steps": self.steps,
+                                  "currSteps": self.currSteps,
+                                  "avgPace": self.avgPace,
+                                  "currPace": self.currPace,
+                                  "currCad": self.currCad]
         return dic
     }
 }

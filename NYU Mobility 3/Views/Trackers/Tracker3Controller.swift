@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import CoreMotion
+import AVFoundation
 
 class Tracker3Controller: UIViewController,
                           CLLocationManagerDelegate {
@@ -54,6 +55,8 @@ class Tracker3Controller: UIViewController,
     
     var state: Int = 0 // Treat as flag for state (0 - not tracking, 1 - tracking)
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,19 +69,34 @@ class Tracker3Controller: UIViewController,
         getLocationPermission()
     }
     
+    // Accessibility (Sound) Features
+    func speakMessage(_ message: String) {
+        let voiceover: Bool = defaults.bool(forKey: "voiceover")
+        if voiceover {
+            let utterance = AVSpeechUtterance(string: message)
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+
+            let synth = AVSpeechSynthesizer()
+            synth.speak(utterance)
+        }
+    }
+    
     // Main trigger event that determines the state that the app is in
     @IBAction func buttonPressed(_ sender: BubbleButton) {
         switch(self.state) {
         case 0:
             startTracking()
+            speakMessage("Start")
             sender.setTitle("Stop", for: .normal)
             self.state = 1
         case 1:
             stopTracking()
+            speakMessage("Stop")
             sender.setTitle("Share", for: .normal)
             self.state = 2
         case 2:
             // Redirects to the share button
+            speakMessage("Share")
             self.performSegue(withIdentifier: "Share3", sender: self)
             clearData()
             sender.setTitle("Start", for: .normal)
