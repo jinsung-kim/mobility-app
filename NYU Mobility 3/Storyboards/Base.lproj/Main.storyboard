@@ -105,17 +105,35 @@
                                     <action selector="switchState:" destination="4fY-lx-tMQ" eventType="touchUpInside" id="qgd-7X-6I1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veering detected: 0 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5A-kW-tJ4">
+                                <rect key="frame" x="122.5" y="387" width="169" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Not Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytY-8H-4SY">
+                                <rect key="frame" x="122" y="341" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nbX-6L-cGB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Kcq-pt-p2T" firstAttribute="centerY" secondItem="PGe-fZ-UTN" secondAttribute="centerY" id="84i-mP-h5y"/>
                             <constraint firstItem="Kcq-pt-p2T" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="BCD-V7-6X7"/>
+                            <constraint firstItem="Kcq-pt-p2T" firstAttribute="top" secondItem="i5A-kW-tJ4" secondAttribute="bottom" constant="25" id="Fi9-pA-Q9Y"/>
+                            <constraint firstItem="ytY-8H-4SY" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="Vcc-ar-HQ0"/>
+                            <constraint firstItem="i5A-kW-tJ4" firstAttribute="top" secondItem="ytY-8H-4SY" secondAttribute="bottom" constant="25" id="iLd-fR-tby"/>
+                            <constraint firstItem="i5A-kW-tJ4" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="ims-lD-3cf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xYO-74-gOm"/>
                     <connections>
+                        <outlet property="sessionStatusLabel" destination="ytY-8H-4SY" id="IKZ-gN-jU7"/>
                         <outlet property="trackButton" destination="Kcq-pt-p2T" id="p3y-3W-oeG"/>
+                        <outlet property="veeringLabel" destination="i5A-kW-tJ4" id="j2F-b6-piz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5SV-eV-FG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
