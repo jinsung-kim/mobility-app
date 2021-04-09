@@ -74,7 +74,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         
 //        print("Estimated Veering: \(estVeer)")
         
-        veeringLabel.text = "Estimated Veering: \(estVeer) m, dTheta: \(dTheta.truncate(places: 2))°"
+        veeringLabel.text = "Estimated Veering: \(estVeer.truncate(places: 2)) m, dTheta: \(dTheta.truncate(places: 2))°"
     }
     
     func startCountingSteps() {
@@ -108,7 +108,11 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         if (startTheta == -1.0) {
             startTheta = curr
         }
-        endTheta = curr // Whatever the last value of curr is -> Is where we end
+        if (endTheta == -1.0) {
+            endTheta = startTheta
+        }
+        
+        endTheta = curr // Whatever the last value of curr is -> Is where we currently end
     }
 }
 
