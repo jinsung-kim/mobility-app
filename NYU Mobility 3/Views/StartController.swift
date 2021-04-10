@@ -54,17 +54,6 @@ class StartController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
     }
-    
-    // Used to ensure that the navigation bar is hidden when needed
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
-//    }
 
     // Registers button clicks + validates + redirects
     @IBAction func button1Pressed(_ sender: Any) {

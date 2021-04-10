@@ -75,6 +75,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
 //        print("Estimated Veering: \(estVeer)")
         
         veeringLabel.text = "Estimated Veering: \(estVeer.truncate(places: 2)) m, dTheta: \(dTheta.truncate(places: 2))°"
+        
+        drawVeeringModel()
     }
     
     func startCountingSteps() {
@@ -113,6 +115,12 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         }
         
         endTheta = curr // Whatever the last value of curr is -> Is where we currently end
+    }
+    
+    func drawVeeringModel() {
+        let veer = VeeringModel(frame: CGRect(x: 10, y: 20, width: 25 , height: 30))
+        veer.backgroundColor = .white
+        view.addSubview(veer)
     }
 }
 

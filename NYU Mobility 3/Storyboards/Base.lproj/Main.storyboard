@@ -117,6 +117,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-EX-FBX" customClass="VeeringModel" customModule="NYU_Mobility_3" customModuleProvider="target">
+                                <rect key="frame" x="50" y="513" width="314" height="299"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nbX-6L-cGB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -125,8 +129,12 @@
                             <constraint firstItem="Kcq-pt-p2T" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="BCD-V7-6X7"/>
                             <constraint firstItem="Kcq-pt-p2T" firstAttribute="top" secondItem="i5A-kW-tJ4" secondAttribute="bottom" constant="25" id="Fi9-pA-Q9Y"/>
                             <constraint firstItem="ytY-8H-4SY" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="Vcc-ar-HQ0"/>
+                            <constraint firstItem="nbX-6L-cGB" firstAttribute="bottom" secondItem="fnB-EX-FBX" secondAttribute="bottom" constant="50" id="e0t-ye-D6C"/>
                             <constraint firstItem="i5A-kW-tJ4" firstAttribute="top" secondItem="ytY-8H-4SY" secondAttribute="bottom" constant="25" id="iLd-fR-tby"/>
                             <constraint firstItem="i5A-kW-tJ4" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="ims-lD-3cf"/>
+                            <constraint firstItem="fnB-EX-FBX" firstAttribute="top" secondItem="Kcq-pt-p2T" secondAttribute="bottom" constant="50" id="ngs-Br-xPz"/>
+                            <constraint firstItem="fnB-EX-FBX" firstAttribute="leading" secondItem="nbX-6L-cGB" secondAttribute="leading" constant="50" id="oPn-s9-bkD"/>
+                            <constraint firstItem="nbX-6L-cGB" firstAttribute="trailing" secondItem="fnB-EX-FBX" secondAttribute="trailing" constant="50" id="pRR-pE-iWc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xYO-74-gOm"/>
@@ -138,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5SV-eV-FG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="-624"/>
+            <point key="canvasLocation" x="892.75362318840587" y="-624.10714285714278"/>
         </scene>
         <!--Tracker1 Controller-->
         <scene sceneID="2UU-e6-tyZ">
