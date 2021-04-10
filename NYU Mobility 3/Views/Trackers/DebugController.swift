@@ -25,6 +25,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     
     var distance: Int = 0
     
+    @IBOutlet weak var veeringModel: UIView!
+    
     // Labels for debugging process
     @IBOutlet weak var sessionStatusLabel: UILabel!
     @IBOutlet weak var veeringLabel: UILabel!
@@ -117,10 +119,20 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         endTheta = curr // Whatever the last value of curr is -> Is where we currently end
     }
     
-    func drawVeeringModel() {
-        let veer = VeeringModel(frame: CGRect(x: 10, y: 20, width: 25 , height: 30))
-        veer.backgroundColor = .white
-        view.addSubview(veer)
+    func drawVeeringModel(){
+        let heightWidth = veeringModel.frame.size.width
+        let path = CGMutablePath()
+
+        path.move(to: CGPoint(x: heightWidth / 2, y: 0))
+        path.addLine(to: CGPoint(x:heightWidth, y: heightWidth / 2))
+        path.addLine(to: CGPoint(x:heightWidth / 2, y:heightWidth))
+        path.addLine(to: CGPoint(x:heightWidth / 2, y:0))
+
+        let shape = CAShapeLayer()
+        shape.path = path
+        shape.fillColor = UIColor.blue.cgColor
+
+        veeringModel.layer.insertSublayer(shape, at: 0)
     }
 }
 

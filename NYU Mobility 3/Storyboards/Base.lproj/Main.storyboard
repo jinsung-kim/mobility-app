@@ -117,7 +117,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-EX-FBX" customClass="VeeringModel" customModule="NYU_Mobility_3" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-EX-FBX">
                                 <rect key="frame" x="50" y="513" width="314" height="299"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -142,6 +142,7 @@
                         <outlet property="sessionStatusLabel" destination="ytY-8H-4SY" id="IKZ-gN-jU7"/>
                         <outlet property="trackButton" destination="Kcq-pt-p2T" id="p3y-3W-oeG"/>
                         <outlet property="veeringLabel" destination="i5A-kW-tJ4" id="j2F-b6-piz"/>
+                        <outlet property="veeringModel" destination="fnB-EX-FBX" id="aHf-5Y-Nni"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5SV-eV-FG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

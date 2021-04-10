@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A10AE4CB2610D1A6004BB906 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AE4CA2610D1A6004BB906 /* SettingsController.swift */; };
-		A14648822621285A0094310F /* VeeringModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14648812621285A0094310F /* VeeringModel.swift */; };
 		A149574625CE0717006BBFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574525CE0717006BBFAC /* AppDelegate.swift */; };
 		A149574825CE0717006BBFAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574725CE0717006BBFAC /* SceneDelegate.swift */; };
 		A149574D25CE0717006BBFAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A149574B25CE0717006BBFAC /* Main.storyboard */; };
@@ -35,7 +34,6 @@
 
 /* Begin PBXFileReference section */
 		A10AE4CA2610D1A6004BB906 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		A14648812621285A0094310F /* VeeringModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeeringModel.swift; sourceTree = "<group>"; };
 		A149574225CE0717006BBFAC /* NYU Mobility 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYU Mobility 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A149574525CE0717006BBFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A149574725CE0717006BBFAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 				A149574525CE0717006BBFAC /* AppDelegate.swift */,
 				A149574725CE0717006BBFAC /* SceneDelegate.swift */,
 				A1C483E125F1218A004E41D5 /* LineChart.swift */,
-				A14648812621285A0094310F /* VeeringModel.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -264,7 +261,6 @@
 				A1C483E225F1218A004E41D5 /* LineChart.swift in Sources */,
 				A1B9168D25CE111400D8D8D7 /* StartController.swift in Sources */,
 				A1B916A225CE38E200D8D8D7 /* ShareController.swift in Sources */,
-				A14648822621285A0094310F /* VeeringModel.swift in Sources */,
 				A1B9169F25CE36E600D8D8D7 /* Step.swift in Sources */,
 				A149576E25CE0972006BBFAC /* Point.swift in Sources */,
 				A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */,
