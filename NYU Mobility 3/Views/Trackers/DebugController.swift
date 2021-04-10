@@ -12,6 +12,12 @@ import UIKit
 import CoreLocation
 import CoreMotion
 
+// Used to determine how the veering was done
+enum Direction {
+    case left
+    case right
+}
+
 class DebugController: UIViewController, CLLocationManagerDelegate {
     
     var state: Int = 0 // Treat as flag for state (0 - not tracking, 1 - tracking)
@@ -78,7 +84,12 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         
         veeringLabel.text = "Estimated Veering: \(estVeer.truncate(places: 2)) m, dTheta: \(dTheta.truncate(places: 2))°"
         
-        drawVeeringModel()
+        // This indicates veering to the left - as the end is a smaller value
+        if (startTheta > endTheta) {
+            drawVeeringModel(Direction.left)
+        } else {
+            drawVeeringModel(Direction.right)
+        }
     }
     
     func startCountingSteps() {
@@ -103,6 +114,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         sessionStatusLabel.text = "Session in progress"
         
         startCountingSteps()
+        
+        clearVeeringModel()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
@@ -112,6 +125,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         if (startTheta == -1.0) {
             startTheta = curr
         }
+        
         if (endTheta == -1.0) {
             endTheta = startTheta
         }
@@ -119,20 +133,41 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         endTheta = curr // Whatever the last value of curr is -> Is where we currently end
     }
     
-    func drawVeeringModel(){
+    func drawVeeringModel(_ direction: Direction) {
         let heightWidth = veeringModel.frame.size.width
         let path = CGMutablePath()
 
-        path.move(to: CGPoint(x: heightWidth / 2, y: 0))
-        path.addLine(to: CGPoint(x:heightWidth, y: heightWidth / 2))
-        path.addLine(to: CGPoint(x:heightWidth / 2, y:heightWidth))
-        path.addLine(to: CGPoint(x:heightWidth / 2, y:0))
+        
+        if (direction == .left) {
+            path.move(to: CGPoint(x: heightWidth / 2, y: 0))
+            path.addLine(to: CGPoint(x: heightWidth, y: heightWidth / 2))
+            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
+            
+            let shape = CAShapeLayer()
+            shape.path = path
+            shape.fillColor = UIColor.purple.cgColor // Color that the triangle is filled in
 
-        let shape = CAShapeLayer()
-        shape.path = path
-        shape.fillColor = UIColor.blue.cgColor
+            veeringModel.layer.insertSublayer(shape, at: 0)
+        } else {
+            path.move(to: CGPoint(x: heightWidth / 3, y: 0))
+            path.addLine(to: CGPoint(x: heightWidth, y: heightWidth / 3))
+            path.addLine(to: CGPoint(x: heightWidth / 3, y: heightWidth))
+            path.addLine(to: CGPoint(x: heightWidth / 3, y: 0))
+            
+            let shape = CAShapeLayer()
+            shape.path = path
+            shape.fillColor = UIColor.purple.cgColor // Color that the triangle is filled in
 
-        veeringModel.layer.insertSublayer(shape, at: 0)
+            veeringModel.layer.insertSublayer(shape, at: 0)
+        }
+    }
+    
+    func clearVeeringModel() {
+        guard let sublayers = veeringModel.layer.sublayers else { return }
+        for layer in sublayers {
+            layer.removeFromSuperlayer()
+        }
     }
 }
 
