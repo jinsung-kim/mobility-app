@@ -139,25 +139,25 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
 
         
         if (direction == .left) {
+            path.move(to: CGPoint(x: 0, y: 0))
+            path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
+            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            path.addLine(to: CGPoint(x: 0, y: 0))
+            
+            let shape = CAShapeLayer()
+            shape.path = path
+            shape.fillColor = UIColor.red.cgColor // Color that the triangle is filled in
+
+            veeringModel.layer.insertSublayer(shape, at: 0)
+        } else {
             path.move(to: CGPoint(x: heightWidth / 2, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth, y: heightWidth / 2))
+            path.addLine(to: CGPoint(x: heightWidth, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
             
             let shape = CAShapeLayer()
             shape.path = path
-            shape.fillColor = UIColor.purple.cgColor // Color that the triangle is filled in
-
-            veeringModel.layer.insertSublayer(shape, at: 0)
-        } else {
-            path.move(to: CGPoint(x: heightWidth / 3, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth, y: heightWidth / 3))
-            path.addLine(to: CGPoint(x: heightWidth / 3, y: heightWidth))
-            path.addLine(to: CGPoint(x: heightWidth / 3, y: 0))
-            
-            let shape = CAShapeLayer()
-            shape.path = path
-            shape.fillColor = UIColor.purple.cgColor // Color that the triangle is filled in
+            shape.fillColor = UIColor.blue.cgColor // Color that the triangle is filled in
 
             veeringModel.layer.insertSublayer(shape, at: 0)
         }
