@@ -16,6 +16,7 @@ import CoreMotion
 enum Direction {
     case left
     case right
+    case straight
 }
 
 class DebugController: UIViewController, CLLocationManagerDelegate {
@@ -24,10 +25,6 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     
     private let locationManager: CLLocationManager = CLLocationManager()
     private let pedometer: CMPedometer = CMPedometer()
-    
-    // Default values are negative so we know how to update the values
-    var startTheta: Double = -1.0
-    var endTheta: Double = -1.0
     
     var distance: Int = 0
     
@@ -39,6 +36,9 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     
     // Buttons to start and stop sessions
     @IBOutlet weak var trackButton: UIButton!
+    
+    // Orientation Array
+    private var compassTrackings: [Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,18 +77,50 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
 //        print("Ending Theta: \(endTheta)")
 //        print("Distance Traveled: \(distance)")
         
+        // Edge cases
+        if (compassTrackings.count == 0) { // No calculations to make if session was too short or perfect
+            veeringLabel.text = "Session was too short to detect veering"
+            return
+        } else if (compassTrackings.count == 1) {
+            veeringLabel.text = "No veering was detected in this session"
+            return
+        }
+        
+        // Left and right derivative counters
+        var lC: Int = 0, rC: Int = 0
+        var prev: Double = compassTrackings.first!, curr: Double = 0.0
+        
+        for i in 1 ..< compassTrackings.count {
+            curr = compassTrackings[i]
+            if (prev >= 0 && prev < 5 && curr > 355) { // Crossing North threshold
+                lC += 1
+            } else if (prev > 355 && curr >= 0 && curr < 5) {
+                rC += 1
+            } else if (curr > prev) {
+                rC += 1
+            } else {
+                lC += 1
+            }
+            prev = compassTrackings[i] // Update previous to be current after
+        }
+        
+        // Can force unwrap since we are now guaranteed to have users:
+        let startTheta = compassTrackings.first!
+        let endTheta = compassTrackings.last!
+        
         let dTheta = abs(startTheta - endTheta)
         let estVeer = abs(cos(dTheta) * Double(distance))
-        
-//        print("Estimated Veering: \(estVeer)")
         
         veeringLabel.text = "Estimated Veering: \(estVeer.truncate(places: 2)) m, dTheta: \(dTheta.truncate(places: 2))°"
         
         // This indicates veering to the left - as the end is a smaller value
-        if (startTheta > endTheta) {
+        if (lC > rC) {
             drawVeeringModel(Direction.left)
-        } else {
+        } else if (rC > lC) {
             drawVeeringModel(Direction.right)
+        } else {
+            // No Veering
+            drawVeeringModel(Direction.straight)
         }
     }
     
@@ -122,21 +154,12 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         // Consider averaging the last 5 values of this - to ensure that there are no outliers?
         let curr = newHeading.magneticHeading
         
-        if (startTheta == -1.0) {
-            startTheta = curr
-        }
-        
-        if (endTheta == -1.0) {
-            endTheta = startTheta
-        }
-        
-        endTheta = curr // Whatever the last value of curr is -> Is where we currently end
+        compassTrackings.append(curr)
     }
     
     func drawVeeringModel(_ direction: Direction) {
         let heightWidth = veeringModel.frame.size.width
         let path = CGMutablePath()
-
         
         if (direction == .left) {
             path.move(to: CGPoint(x: 0, y: 0))
@@ -149,7 +172,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             shape.fillColor = UIColor.red.cgColor // Color that the triangle is filled in
 
             veeringModel.layer.insertSublayer(shape, at: 0)
-        } else {
+        } else if (direction == .right) {
             path.move(to: CGPoint(x: heightWidth / 2, y: 0))
             path.addLine(to: CGPoint(x: heightWidth, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
@@ -158,6 +181,15 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             let shape = CAShapeLayer()
             shape.path = path
             shape.fillColor = UIColor.blue.cgColor // Color that the triangle is filled in
+
+            veeringModel.layer.insertSublayer(shape, at: 0)
+        } else { // Straight
+            path.move(to: CGPoint(x: heightWidth / 2, y: 0))
+            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            
+            let shape = CAShapeLayer()
+            shape.path = path
+            shape.fillColor = UIColor.green.cgColor // Color that the line is filled in
 
             veeringModel.layer.insertSublayer(shape, at: 0)
         }
