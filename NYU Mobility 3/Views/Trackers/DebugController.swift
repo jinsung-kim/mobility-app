@@ -161,22 +161,57 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         let heightWidth = veeringModel.frame.size.width
         let path = CGMutablePath()
         
+        let hLen: Int = compassTrackings.count
+        let deltaY: Double = Double(heightWidth) / Double(hLen)
+        
+        // Used to move the path a certain amount based on prior compass
+        // trackings
+        var newX: Double = Double(heightWidth) / 2.0
+        var newY: Double = Double(heightWidth)
+        
+        var xChanges: [Double] = []
+        var xTotal: Double = 0.0
+        
         if (direction == .left) {
-            path.move(to: CGPoint(x: 0, y: 0))
+            path.move(to: CGPoint(x: heightWidth / 2, y: heightWidth))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
             path.addLine(to: CGPoint(x: 0, y: 0))
+            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
             
             let shape = CAShapeLayer()
             shape.path = path
             shape.fillColor = UIColor.red.cgColor // Color that the triangle is filled in
-
+            
             veeringModel.layer.insertSublayer(shape, at: 0)
         } else if (direction == .right) {
-            path.move(to: CGPoint(x: heightWidth / 2, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            
+            path.move(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            
+            for i in 1 ..< hLen {
+                let deltaTheta: CGFloat = CGFloat(compassTrackings[i]) - CGFloat(compassTrackings[i - 1])
+                
+                print(deltaTheta)
+                
+                if (deltaTheta < 0) { // Going right
+                    let c = Double((Double(deltaY) * Double(tan(abs(deltaTheta)))))
+                    xTotal += c
+                    xChanges.append(c)
+                } else { // Going left
+                    let c = Double((Double(deltaY) * Double(tan(deltaTheta))))
+                    xTotal += c
+                    xChanges.append(c)
+                }
+            }
+            
+            for i in 1 ..< xChanges.count {
+                newY -= deltaY
+                newX += (xChanges[i] / xTotal) * 25
+                path.addLine(to: CGPoint(x: newX, y: newY))
+            }
+
+            path.addLine(to: CGPoint(x: newX, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
+            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
             
             let shape = CAShapeLayer()
             shape.path = path
@@ -200,6 +235,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         for layer in sublayers {
             layer.removeFromSuperlayer()
         }
+        compassTrackings.removeAll() // Removes the previous session's trackers
     }
 }
 
