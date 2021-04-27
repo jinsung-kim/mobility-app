@@ -174,8 +174,31 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         
         if (direction == .left) {
             path.move(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            
+            for i in 1 ..< hLen {
+                let deltaTheta: CGFloat = CGFloat(compassTrackings[i]) - CGFloat(compassTrackings[i - 1])
+                
+                print(deltaTheta)
+                
+                if (deltaTheta < 0) { // Going right
+                    let c = Double((Double(deltaY) * Double(tan(abs(deltaTheta)))))
+                    xTotal += c
+                    xChanges.append(-c)
+                } else { // Going left
+                    let c = Double((Double(deltaY) * Double(tan(deltaTheta))))
+                    xTotal += c
+                    xChanges.append(c)
+                }
+            }
+            
+            for i in 1 ..< xChanges.count {
+                newY -= deltaY
+                newX += (xChanges[i] / xTotal) * 25
+                path.addLine(to: CGPoint(x: newX, y: newY))
+            }
+            
+            path.addLine(to: CGPoint(x: newX, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
-            path.addLine(to: CGPoint(x: 0, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
             
             let shape = CAShapeLayer()
