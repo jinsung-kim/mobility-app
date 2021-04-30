@@ -18,6 +18,7 @@
 		A149576E25CE0972006BBFAC /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576D25CE0972006BBFAC /* Point.swift */; };
 		A156B68B26120E3400E17DC8 /* DebugController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A156B68A26120E3400E17DC8 /* DebugController.swift */; };
 		A17DC0C525F01D3300596B45 /* StepHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17DC0C425F01D3300596B45 /* StepHistoryController.swift */; };
+		A1924DA4263843B10019DD7D /* TimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1924DA3263843B10019DD7D /* TimeSince.swift */; };
 		A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9167E25CE0B6800D8D8D7 /* Colors.swift */; };
 		A1B9168325CE0B8E00D8D8D7 /* BubbleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */; };
 		A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */; };
@@ -46,6 +47,7 @@
 		A149576D25CE0972006BBFAC /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		A156B68A26120E3400E17DC8 /* DebugController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugController.swift; sourceTree = "<group>"; };
 		A17DC0C425F01D3300596B45 /* StepHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepHistoryController.swift; sourceTree = "<group>"; };
+		A1924DA3263843B10019DD7D /* TimeSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSince.swift; sourceTree = "<group>"; };
 		A1B9167E25CE0B6800D8D8D7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextField.swift; sourceTree = "<group>"; };
 		A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */,
+				A1924DA3263843B10019DD7D /* TimeSince.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */,
 				A1B9169625CE28BC00D8D8D7 /* Tracker1Controller.swift in Sources */,
 				A149574625CE0717006BBFAC /* AppDelegate.swift in Sources */,
+				A1924DA4263843B10019DD7D /* TimeSince.swift in Sources */,
 				A156B68B26120E3400E17DC8 /* DebugController.swift in Sources */,
 				A1B9168325CE0B8E00D8D8D7 /* BubbleTextField.swift in Sources */,
 				A149576925CE094C006BBFAC /* Gyro.swift in Sources */,

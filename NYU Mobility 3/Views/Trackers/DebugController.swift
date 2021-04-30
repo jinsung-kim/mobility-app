@@ -28,6 +28,10 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     
     var distance: Int = 0
     
+    var currTime: Int!
+    var totalTime: Int = 0
+    var timeIntervals: [Int] = []
+    
     @IBOutlet weak var veeringModel: UIView!
     
     // Labels for debugging process
@@ -53,6 +57,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         switch(self.state) {
         case 0:
             setup()
+            currTime = getCurrentMillis()
             sender.setTitle("Stop", for: .normal)
             self.state = 1
         case 1:
@@ -72,11 +77,6 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingHeading()
         locationManager.stopUpdatingLocation()
         
-//        print("-------Results-------")
-//        print("Starting Theta: \(startTheta)")
-//        print("Ending Theta: \(endTheta)")
-//        print("Distance Traveled: \(distance)")
-        
         // Edge cases
         if (compassTrackings.count == 0) { // No calculations to make if session was too short or perfect
             veeringLabel.text = "Session was too short to detect veering"
@@ -92,9 +92,9 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         
         for i in 1 ..< compassTrackings.count {
             curr = compassTrackings[i]
-            if (prev >= 0 && prev < 5 && curr > 355) { // Crossing North threshold
+            if (prev >= 0 && prev < 5 && curr > 355) { // Crossing North threshold (l -> r)
                 lC += 1
-            } else if (prev > 355 && curr >= 0 && curr < 5) {
+            } else if (prev > 355 && curr >= 0 && curr < 5) { // Crossing (r -> l)
                 rC += 1
             } else if (curr > prev) {
                 rC += 1
@@ -104,7 +104,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             prev = compassTrackings[i] // Update previous to be current after
         }
         
-        // Can force unwrap since we are now guaranteed to have users:
+        // Can force unwrap since we are now guaranteed to have values:
         let startTheta = compassTrackings.first!
         let endTheta = compassTrackings.last!
         
@@ -155,6 +155,15 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         let curr = newHeading.magneticHeading
         
         compassTrackings.append(curr)
+        
+        
+        let now = getCurrentMillis()
+        let timeSplit = now - currTime!
+        totalTime += timeSplit
+        
+        timeIntervals.append(timeSplit)
+        
+        currTime = now
     }
     
     func drawVeeringModel(_ direction: Direction) {
@@ -162,7 +171,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         let path = CGMutablePath()
         
         let hLen: Int = compassTrackings.count
-        let deltaY: Double = Double(heightWidth) / Double(hLen)
+        let changeY: Double = Double(heightWidth) / Double(hLen)
+        var deltaY: Double = 0.0
         
         // Used to move the path a certain amount based on prior compass
         // trackings
@@ -177,9 +187,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             
             for i in 1 ..< hLen {
                 let deltaTheta: CGFloat = CGFloat(compassTrackings[i]) - CGFloat(compassTrackings[i - 1])
-                
-                print(deltaTheta)
-                
+                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
                 if (deltaTheta < 0) { // Going right
                     let c = Double((Double(deltaY) * Double(tan(abs(deltaTheta)))))
                     xTotal += c
@@ -192,6 +200,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             }
             
             for i in 1 ..< xChanges.count {
+                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
                 newY -= deltaY
                 newX += (xChanges[i] / xTotal) * 25
                 path.addLine(to: CGPoint(x: newX, y: newY))
@@ -212,8 +221,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             
             for i in 1 ..< hLen {
                 let deltaTheta: CGFloat = CGFloat(compassTrackings[i]) - CGFloat(compassTrackings[i - 1])
-                
-                print(deltaTheta)
+                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
                 
                 if (deltaTheta < 0) { // Going right
                     let c = Double((Double(deltaY) * Double(tan(abs(deltaTheta)))))
@@ -227,6 +235,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             }
             
             for i in 1 ..< xChanges.count {
+                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
                 newY -= deltaY
                 newX += (xChanges[i] / xTotal) * 25
                 path.addLine(to: CGPoint(x: newX, y: newY))
@@ -241,16 +250,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             shape.fillColor = UIColor.blue.cgColor // Color that the triangle is filled in
 
             veeringModel.layer.insertSublayer(shape, at: 0)
-        } else { // Straight
-            path.move(to: CGPoint(x: heightWidth / 2, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
-            
-            let shape = CAShapeLayer()
-            shape.path = path
-            shape.fillColor = UIColor.green.cgColor // Color that the line is filled in
-
-            veeringModel.layer.insertSublayer(shape, at: 0)
         }
+//        print(timeIntervals)
     }
     
     func clearVeeringModel() {
@@ -259,6 +260,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             layer.removeFromSuperlayer()
         }
         compassTrackings.removeAll() // Removes the previous session's trackers
+        timeIntervals.removeAll() // Clears time slots
+        totalTime = 0
     }
 }
 
