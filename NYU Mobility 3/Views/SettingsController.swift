@@ -7,6 +7,8 @@
 
 import UIKit
 
+// This is the settings view controller where the user can make certain adjustments
+// based on their needs
 class SettingsController: UITableViewController {
     
     // Buttons to make changes
@@ -14,11 +16,6 @@ class SettingsController: UITableViewController {
     @IBOutlet weak var voiceoverSwitch: UISwitch!
     
     let defaults = UserDefaults.standard
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//    }
     
     override func viewDidAppear(_ animated: Bool) {
         voiceoverSwitch.isOn = defaults.bool(forKey: "voiceover")
@@ -28,6 +25,10 @@ class SettingsController: UITableViewController {
         defaults.setValue(sender.isOn, forKey: "voiceover")
     }
     
+    /**
+     When this IBAction handler goes off - an alert controller will pop up for the user
+     where they can change their email again. The new email will be saved in the UserDefaults
+     */
     @IBAction func changeEmailPressed(_ sender: Any) {
         let alertController = UIAlertController(title: "Change Email", message: """
                                         Your email is needed to label files \

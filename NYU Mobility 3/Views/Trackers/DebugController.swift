@@ -12,7 +12,7 @@ import UIKit
 import CoreLocation
 import CoreMotion
 
-// Used to determine how the veering was done
+// Used to determine what direction the veering was done
 enum Direction {
     case left
     case right
@@ -21,17 +21,31 @@ enum Direction {
 
 class DebugController: UIViewController, CLLocationManagerDelegate {
     
-    var state: Int = 0 // Treat as flag for state (0 - not tracking, 1 - tracking)
+    // Treat as flag for state:
+    // 0 - start tracking
+    // 1 - stop tracking
+    // 2 - show results
+    var state: Int = 0
     
+    // Managers that will be called when tracking begins
     private let locationManager: CLLocationManager = CLLocationManager()
     private let pedometer: CMPedometer = CMPedometer()
     
+    // Veering in a particular direction
     var distance: Int = 0
     
+    // Used to calculate time between two compass data points
     var currTime: Int!
+    // Used as a method of regularization when the graphic is drawn (to ensure that it fits into the frame)
     var totalTime: Int = 0
+    // Used to store the history of each interval to draw out
     var timeIntervals: [Int] = []
     
+    // CONSTANT for how wide the veering should be - this should not be too high
+    // to avoid clipping
+    let X_MOVE: Int = 25
+    
+    // The view where the graphic is drawn to show veering
     @IBOutlet weak var veeringModel: UIView!
     
     // Labels for debugging process
@@ -49,10 +63,18 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
     
+    // Edge case: If the session runs so long that this is called -> Simply clear the data
+    // Ideally this would never happen
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    /**
+     The state of the tracking session.
+     0 - Default state (not recording or tracking anything - but transitions into starting the session)
+     1 - Tracking is in session. Once this is pressed the session is stopped
+     2 - Completes the session and adds the information about the veering (d theta)
+     */
     @IBAction func switchState(_ sender: UIButton) {
         switch(self.state) {
         case 0:
@@ -73,20 +95,31 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    /**
+     After the session is completed - the location manager is stopped (stopping the steps, distance, and compass trackers)
+     Then, the calculations are made and veering is detected (either in left and right)
+     Finally, the draw veering model function is called -> which will draw out the graphic for the actual veering
+     */
     func stopTracking() {
         locationManager.stopUpdatingHeading()
         locationManager.stopUpdatingLocation()
         
         // Edge cases
-        if (compassTrackings.count == 0) { // No calculations to make if session was too short or perfect
+        // No calculations to make if session was too short or perfect
+        if (compassTrackings.count == 0) {
             veeringLabel.text = "Session was too short to detect veering"
             return
+        // If there is only one compass entry -> There was no veering
+        // Or the session was too short
         } else if (compassTrackings.count == 1) {
             veeringLabel.text = "No veering was detected in this session"
             return
         }
         
         // Left and right derivative counters
+        // We increment these counters for each left + right movement
+        // The overall count of these counters will determine whether
+        // veering was to the left or to the right
         var lC: Int = 0, rC: Int = 0
         var prev: Double = compassTrackings.first!, curr: Double = 0.0
         
@@ -108,6 +141,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         let startTheta = compassTrackings.first!
         let endTheta = compassTrackings.last!
         
+        // Currently the way we detect the difference in theta (veering angle)
         let dTheta = abs(startTheta - endTheta)
         let estVeer = abs(cos(dTheta) * Double(distance))
         
@@ -124,6 +158,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Called when we want to start counting the steps
     func startCountingSteps() {
         pedometer.startUpdates(from: Date()) {
           [weak self] pedometerData, error in
@@ -135,6 +170,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Calls all the functions needed to start a session
+    // This is the main function that is used when the button is pressed (IBAction handler)
     func setup() {
         self.locationManager.requestWhenInUseAuthorization()
         
@@ -147,16 +184,20 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         
         startCountingSteps()
         
+        // If multiple sessions done at once -> we want to clear out the area
+        // for the new session (no overwriting)
         clearVeeringModel()
     }
     
+    // Called everytime the compass is moved at least 1 degrees in a particular direction
+    // We get a time stamp -> And then we also store the new compass value
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         // Consider averaging the last 5 values of this - to ensure that there are no outliers?
         let curr = newHeading.magneticHeading
         
         compassTrackings.append(curr)
         
-        
+        // Used to get the time split
         let now = getCurrentMillis()
         let timeSplit = now - currTime!
         totalTime += timeSplit
@@ -166,6 +207,14 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         currTime = now
     }
     
+    /**
+     The actual function that draws out the veering once the direction is determined in stopTracking()
+     There are two cases (in the current build):
+        - Left -> Red color triangle
+        - Right -> Blue color triangle
+     
+     There are also a lot of visual calculations that are made using the arrays for orientation and time stamps
+     */
     func drawVeeringModel(_ direction: Direction) {
         let heightWidth = veeringModel.frame.size.width
         let path = CGMutablePath()
@@ -185,6 +234,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         if (direction == .left) {
             path.move(to: CGPoint(x: heightWidth / 2, y: heightWidth))
             
+            // This is where the calculations are made
             for i in 1 ..< hLen {
                 let deltaTheta: CGFloat = CGFloat(compassTrackings[i]) - CGFloat(compassTrackings[i - 1])
                 deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
@@ -199,13 +249,15 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
                 }
             }
             
+            // Where the path is actually drawn
             for i in 1 ..< xChanges.count {
                 deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
                 newY -= deltaY
-                newX += (xChanges[i] / xTotal) * 25
+                newX += (xChanges[i] / xTotal) * Double(X_MOVE)
                 path.addLine(to: CGPoint(x: newX, y: newY))
             }
             
+            // This completes the triangle
             path.addLine(to: CGPoint(x: newX, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
@@ -219,6 +271,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             
             path.move(to: CGPoint(x: heightWidth / 2, y: heightWidth))
             
+            // This is where the calculations are made
             for i in 1 ..< hLen {
                 let deltaTheta: CGFloat = CGFloat(compassTrackings[i]) - CGFloat(compassTrackings[i - 1])
                 deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
@@ -234,13 +287,15 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
                 }
             }
             
+            // Where the path is actually drawn
             for i in 1 ..< xChanges.count {
                 deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
                 newY -= deltaY
-                newX += (xChanges[i] / xTotal) * 25
+                newX += (xChanges[i] / xTotal) * Double(X_MOVE)
                 path.addLine(to: CGPoint(x: newX, y: newY))
             }
 
+            // This completes the triangle
             path.addLine(to: CGPoint(x: newX, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
             path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
@@ -254,19 +309,23 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
 //        print(timeIntervals)
     }
     
+    /**
+     This function is used to clear the veering model and all of its corresponding variables
+     This includes the compass trackings, time interval trackings, and the total time that is an
+     accumulated sum
+     */
     func clearVeeringModel() {
         guard let sublayers = veeringModel.layer.sublayers else { return }
         for layer in sublayers {
             layer.removeFromSuperlayer()
         }
+        clearSessionData()
+    }
+    
+    // Clears all the session data -> mainly used in clearVeeringModel()
+    func clearSessionData() {
         compassTrackings.removeAll() // Removes the previous session's trackers
         timeIntervals.removeAll() // Clears time slots
         totalTime = 0
-    }
-}
-
-extension Double {
-    func truncate(places : Int) -> Double {
-        return Double(floor(pow(10.0, Double(places)) * self) / pow(10.0, Double(places)))
     }
 }

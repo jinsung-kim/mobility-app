@@ -9,6 +9,7 @@ import UIKit
 import HealthKit
 import QuartzCore
 
+// NOT BEING USED
 class StepHistoryController: UIViewController, LineChartDelegate {
     
     let healthStore = HKHealthStore()
