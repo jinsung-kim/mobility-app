@@ -19,6 +19,7 @@ enum Direction {
     case straight
 }
 
+/// This is the view controller that controls the veering session
 class DebugController: UIViewController, CLLocationManagerDelegate {
     
     // Treat as flag for state:
@@ -43,7 +44,11 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     
     // CONSTANT for how wide the veering should be - this should not be too high
     // to avoid clipping
-    let X_MOVE: Int = 25
+    let X_MOVE: Double = 25.0
+    
+    // CONSTANT for how tall the veering height should be - this should also not be too high
+    // to avoid clipping
+    let Y_MOVE: Double = 10.0
     
     // The view where the graphic is drawn to show veering
     @IBOutlet weak var veeringModel: UIView!
@@ -237,7 +242,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             // This is where the calculations are made
             for i in 1 ..< hLen {
                 let deltaTheta: CGFloat = CGFloat(compassTrackings[i]) - CGFloat(compassTrackings[i - 1])
-                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
+                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * Y_MOVE
                 if (deltaTheta < 0) { // Going right
                     let c = Double((Double(deltaY) * Double(tan(abs(deltaTheta)))))
                     xTotal += c
@@ -251,9 +256,9 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             
             // Where the path is actually drawn
             for i in 1 ..< xChanges.count {
-                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
+                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * Y_MOVE
                 newY -= deltaY
-                newX += (xChanges[i] / xTotal) * Double(X_MOVE)
+                newX += (xChanges[i] / xTotal) * X_MOVE
                 path.addLine(to: CGPoint(x: newX, y: newY))
             }
             
@@ -274,7 +279,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             // This is where the calculations are made
             for i in 1 ..< hLen {
                 let deltaTheta: CGFloat = CGFloat(compassTrackings[i]) - CGFloat(compassTrackings[i - 1])
-                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
+                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * Y_MOVE
                 
                 if (deltaTheta < 0) { // Going right
                     let c = Double((Double(deltaY) * Double(tan(abs(deltaTheta)))))
@@ -289,9 +294,9 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             
             // Where the path is actually drawn
             for i in 1 ..< xChanges.count {
-                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * 10
+                deltaY = (Double(timeIntervals[i]) / Double(totalTime)) * changeY * Y_MOVE
                 newY -= deltaY
-                newX += (xChanges[i] / xTotal) * Double(X_MOVE)
+                newX += (xChanges[i] / xTotal) * X_MOVE
                 path.addLine(to: CGPoint(x: newX, y: newY))
             }
 

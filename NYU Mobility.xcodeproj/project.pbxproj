@@ -17,9 +17,9 @@
 		A149576925CE094C006BBFAC /* Gyro.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576825CE094C006BBFAC /* Gyro.swift */; };
 		A149576E25CE0972006BBFAC /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576D25CE0972006BBFAC /* Point.swift */; };
 		A156B68B26120E3400E17DC8 /* DebugController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A156B68A26120E3400E17DC8 /* DebugController.swift */; };
-		A17DC0C525F01D3300596B45 /* StepHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17DC0C425F01D3300596B45 /* StepHistoryController.swift */; };
 		A1924DA4263843B10019DD7D /* TimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1924DA3263843B10019DD7D /* TimeSince.swift */; };
 		A1B2EB79263B9A6F001433C0 /* Double+Truncate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */; };
+		A1B2EB7B263C43BA001433C0 /* InputDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2EB7A263C43BA001433C0 /* InputDialog.swift */; };
 		A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9167E25CE0B6800D8D8D7 /* Colors.swift */; };
 		A1B9168325CE0B8E00D8D8D7 /* BubbleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */; };
 		A1B9168625CE0BC000D8D8D7 /* BubbleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */; };
@@ -36,7 +36,7 @@
 
 /* Begin PBXFileReference section */
 		A10AE4CA2610D1A6004BB906 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		A149574225CE0717006BBFAC /* NYU Mobility 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYU Mobility 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A149574225CE0717006BBFAC /* NYU Mobility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYU Mobility.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A149574525CE0717006BBFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A149574725CE0717006BBFAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A149574C25CE0717006BBFAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,9 +47,9 @@
 		A149576825CE094C006BBFAC /* Gyro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gyro.swift; sourceTree = "<group>"; };
 		A149576D25CE0972006BBFAC /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		A156B68A26120E3400E17DC8 /* DebugController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugController.swift; sourceTree = "<group>"; };
-		A17DC0C425F01D3300596B45 /* StepHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepHistoryController.swift; sourceTree = "<group>"; };
 		A1924DA3263843B10019DD7D /* TimeSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSince.swift; sourceTree = "<group>"; };
 		A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Truncate.swift"; sourceTree = "<group>"; };
+		A1B2EB7A263C43BA001433C0 /* InputDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDialog.swift; sourceTree = "<group>"; };
 		A1B9167E25CE0B6800D8D8D7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A1B9168225CE0B8E00D8D8D7 /* BubbleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextField.swift; sourceTree = "<group>"; };
 		A1B9168525CE0BC000D8D8D7 /* BubbleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleButton.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		A1B9169E25CE36E600D8D8D7 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		A1B916A125CE38E200D8D8D7 /* ShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
 		A1C483E125F1218A004E41D5 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		A1E94B3825E96D420050EF24 /* NYU Mobility 3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NYU Mobility 3.entitlements"; sourceTree = "<group>"; };
+		A1E94B3825E96D420050EF24 /* NYU Mobility.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NYU Mobility.entitlements"; sourceTree = "<group>"; };
 		A1E94B3925E96D430050EF24 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -99,7 +99,7 @@
 		A149573925CE0717006BBFAC = {
 			isa = PBXGroup;
 			children = (
-				A149574425CE0717006BBFAC /* NYU Mobility 3 */,
+				A149574425CE0717006BBFAC /* NYU Mobility */,
 				A149574325CE0717006BBFAC /* Products */,
 				6CEE1BCA2843830B49071847 /* Frameworks */,
 			);
@@ -108,15 +108,15 @@
 		A149574325CE0717006BBFAC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A149574225CE0717006BBFAC /* NYU Mobility 3.app */,
+				A149574225CE0717006BBFAC /* NYU Mobility.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A149574425CE0717006BBFAC /* NYU Mobility 3 */ = {
+		A149574425CE0717006BBFAC /* NYU Mobility */ = {
 			isa = PBXGroup;
 			children = (
-				A1E94B3825E96D420050EF24 /* NYU Mobility 3.entitlements */,
+				A1E94B3825E96D420050EF24 /* NYU Mobility.entitlements */,
 				A149576725CE08E3006BBFAC /* Storyboards */,
 				A149576625CE08D7006BBFAC /* Helper */,
 				A149576525CE08D0006BBFAC /* Resources */,
@@ -125,7 +125,7 @@
 				A149576225CE08BD006BBFAC /* Models */,
 				A149575625CE0718006BBFAC /* Info.plist */,
 			);
-			path = "NYU Mobility 3";
+			path = "NYU Mobility";
 			sourceTree = "<group>";
 		};
 		A149576225CE08BD006BBFAC /* Models */ = {
@@ -155,7 +155,6 @@
 				A10AE4C92610D18F004BB906 /* Trackers */,
 				A1B9168C25CE111400D8D8D7 /* StartController.swift */,
 				A1B916A125CE38E200D8D8D7 /* ShareController.swift */,
-				A17DC0C425F01D3300596B45 /* StepHistoryController.swift */,
 				A10AE4CA2610D1A6004BB906 /* SettingsController.swift */,
 			);
 			path = Views;
@@ -178,6 +177,7 @@
 				A1B9168825CE0BDF00D8D8D7 /* String+Indexing.swift */,
 				A1924DA3263843B10019DD7D /* TimeSince.swift */,
 				A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */,
+				A1B2EB7A263C43BA001433C0 /* InputDialog.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -194,9 +194,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A149574125CE0717006BBFAC /* NYU Mobility 3 */ = {
+		A149574125CE0717006BBFAC /* NYU Mobility */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A149575925CE0718006BBFAC /* Build configuration list for PBXNativeTarget "NYU Mobility 3" */;
+			buildConfigurationList = A149575925CE0718006BBFAC /* Build configuration list for PBXNativeTarget "NYU Mobility" */;
 			buildPhases = (
 				A149573E25CE0717006BBFAC /* Sources */,
 				A149573F25CE0717006BBFAC /* Frameworks */,
@@ -206,9 +206,9 @@
 			);
 			dependencies = (
 			);
-			name = "NYU Mobility 3";
+			name = "NYU Mobility";
 			productName = "NYU Mobility 3";
-			productReference = A149574225CE0717006BBFAC /* NYU Mobility 3.app */;
+			productReference = A149574225CE0717006BBFAC /* NYU Mobility.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -225,7 +225,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A149573D25CE0717006BBFAC /* Build configuration list for PBXProject "NYU Mobility 3" */;
+			buildConfigurationList = A149573D25CE0717006BBFAC /* Build configuration list for PBXProject "NYU Mobility" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -238,7 +238,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A149574125CE0717006BBFAC /* NYU Mobility 3 */,
+				A149574125CE0717006BBFAC /* NYU Mobility */,
 			);
 		};
 /* End PBXProject section */
@@ -271,8 +271,8 @@
 				A149576E25CE0972006BBFAC /* Point.swift in Sources */,
 				A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */,
 				A1B2EB79263B9A6F001433C0 /* Double+Truncate.swift in Sources */,
+				A1B2EB7B263C43BA001433C0 /* InputDialog.swift in Sources */,
 				A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */,
-				A17DC0C525F01D3300596B45 /* StepHistoryController.swift in Sources */,
 				A1B9169925CE294900D8D8D7 /* Tracker2Controller.swift in Sources */,
 				A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */,
 				A1B9169625CE28BC00D8D8D7 /* Tracker1Controller.swift in Sources */,
@@ -428,10 +428,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "NYU Mobility 3/NYU Mobility 3.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "NYU Mobility/NYU Mobility.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UDU5C8NBFK;
-				INFOPLIST_FILE = "NYU Mobility 3/Info.plist";
+				INFOPLIST_FILE = "NYU Mobility/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -448,10 +448,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "NYU Mobility 3/NYU Mobility 3.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "NYU Mobility/NYU Mobility.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UDU5C8NBFK;
-				INFOPLIST_FILE = "NYU Mobility 3/Info.plist";
+				INFOPLIST_FILE = "NYU Mobility/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +466,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A149573D25CE0717006BBFAC /* Build configuration list for PBXProject "NYU Mobility 3" */ = {
+		A149573D25CE0717006BBFAC /* Build configuration list for PBXProject "NYU Mobility" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A149575725CE0718006BBFAC /* Debug */,
@@ -475,7 +475,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A149575925CE0718006BBFAC /* Build configuration list for PBXNativeTarget "NYU Mobility 3" */ = {
+		A149575925CE0718006BBFAC /* Build configuration list for PBXNativeTarget "NYU Mobility" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A149575A25CE0718006BBFAC /* Debug */,

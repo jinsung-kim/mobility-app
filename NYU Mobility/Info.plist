@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Needed to get steps walked</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>NYU Mobility</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,9 +24,11 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Your camera is needed to visualize motion</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Your location is needed to track where you go</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Needed to get steps walked</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is needed to see where you go</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Your location is needed to see where you go</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Your motion will be used to track your progress</string>
@@ -64,8 +66,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

@@ -41,11 +41,13 @@ open class LineChart: UIView {
         }
     }
     
+    // Labels for each side
     public struct Labels {
         public var visible: Bool = true
         public var values: [String] = []
     }
     
+    // Grid view like matlibplot
     public struct Grid {
         public var visible: Bool = true
         public var count: CGFloat = 10
@@ -53,6 +55,7 @@ open class LineChart: UIView {
         public var color: UIColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1)
     }
     
+    // Axis (x,y)
     public struct Axis {
         public var visible: Bool = true
         // #875aa6
@@ -60,6 +63,7 @@ open class LineChart: UIView {
         public var inset: CGFloat = 15
     }
     
+    // Each point
     public struct Coordinate {
         // public
         public var labels: Labels = Labels()
@@ -73,6 +77,7 @@ open class LineChart: UIView {
         fileprivate var ticks: (CGFloat, CGFloat, CGFloat)!
     }
     
+    // Sliding animation
     public struct Animation {
         public var enabled: Bool = true
         public var duration: CFTimeInterval = 1

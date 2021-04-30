@@ -24,32 +24,35 @@ class StartController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocationPermission()
-        addButton()
-        addButton2()
+        addSettingsButton()
+        addDebugButton()
     }
     
-    func addButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Settings",
+    // Adds buttons to the navigation bar for appropriate redirects
+    func addSettingsButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Settings",
                                                                       style: .done,
                                                                       target: self,
                                                                       action: #selector(self.rightClick(sender:)))
     }
     
-    func addButton2() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Debug",
+    func addDebugButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Debug",
                                                                      style: .done,
                                                                      target: self,
                                                                      action: #selector(self.leftClick(sender:)))
     }
     
+    // Redirects to the appropriate view controller
     @objc func rightClick(sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: "GoToSettings", sender: self)
+        performSegue(withIdentifier: "GoToSettings", sender: self)
     }
     
     @objc func leftClick(sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: "ToDebug", sender: self)
+        performSegue(withIdentifier: "ToDebug", sender: self)
     }
     
+    /// Tries to get authorization before the tracking begins to ensure that it is set up
     func getLocationPermission() {
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -104,7 +107,7 @@ class StartController: UIViewController, CLLocationManagerDelegate {
         defaults.set(value, forKey: "\(key)")
     }
     
-    // Accessibility (Sound) Features
+    /// Accessibility (Sound) Features -> Only triggered if the setting is enabled
     func speakMessage(_ message: String) {
         let voiceover: Bool = defaults.bool(forKey: "voiceover")
         if voiceover {
@@ -114,33 +117,5 @@ class StartController: UIViewController, CLLocationManagerDelegate {
             let synth = AVSpeechSynthesizer()
             synth.speak(utterance)
         }
-    }
-}
-
-extension UIViewController {
-    func showInputDialog(title: String? = nil,
-                         subtitle: String? = nil,
-                         actionTitle: String? = "Add",
-                         cancelTitle: String? = "Cancel",
-                         inputPlaceholder: String? = nil,
-                         inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
-                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
-                         actionHandler: ((_ text: String?) -> Void)? = nil) {
-
-        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
-        alert.addTextField { (textField:UITextField) in
-            textField.placeholder = inputPlaceholder
-            textField.keyboardType = inputKeyboardType
-        }
-        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
-            guard let textField =  alert.textFields?.first else {
-                actionHandler?(nil)
-                return
-            }
-            actionHandler?(textField.text)
-        }))
-        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
-
-        self.present(alert, animated: true, completion: nil)
     }
 }

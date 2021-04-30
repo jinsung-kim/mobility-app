@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Used to truncate strings + slice strings
+/// Used to truncate strings + slice strings -> Like in C++ or Python
 extension String {
     
     subscript (bounds: CountableClosedRange<Int>) -> String {
