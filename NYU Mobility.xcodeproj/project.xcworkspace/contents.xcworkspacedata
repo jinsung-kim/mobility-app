@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/jinkim/dev/swift-apps/NYU Mobility 3/NYU Mobility.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
