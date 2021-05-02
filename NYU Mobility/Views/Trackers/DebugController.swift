@@ -332,5 +332,6 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         compassTrackings.removeAll() // Removes the previous session's trackers
         timeIntervals.removeAll() // Clears time slots
         totalTime = 0
+        distance = 0
     }
 }
