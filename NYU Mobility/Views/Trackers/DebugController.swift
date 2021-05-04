@@ -48,7 +48,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     
     // CONSTANT for how tall the veering height should be - this should also not be too high
     // to avoid clipping
-    let Y_MOVE: Double = 10.0
+    let Y_MOVE: Double = 1
     
     // The view where the graphic is drawn to show veering
     @IBOutlet weak var veeringModel: UIView!
@@ -147,8 +147,9 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         let endTheta = compassTrackings.last!
         
         // Currently the way we detect the difference in theta (veering angle)
-        let dTheta = abs(startTheta - endTheta)
-        let estVeer = abs(cos(dTheta) * Double(distance))
+        // Takes the minimum of difference -> as the theta of degrees
+        let dTheta = min(abs(startTheta - endTheta), abs(360 - startTheta + endTheta))
+        let estVeer = sin(dTheta) * Double(distance)
         
         veeringLabel.text = "Estimated Veering: \(estVeer.truncate(places: 2)) m, dTheta: \(dTheta.truncate(places: 2))°"
         
@@ -225,7 +226,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         let path = CGMutablePath()
         
         let hLen: Int = compassTrackings.count
-        let changeY: Double = Double(heightWidth) / Double(hLen)
+//        let changeY: Double = Double(heightWidth) / Double(hLen) -> Only use for setting all lengths to same size
+        let changeY: Double = Double(heightWidth)
         var deltaY: Double = 0.0
         
         // Used to move the path a certain amount based on prior compass
@@ -329,6 +331,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     
     // Clears all the session data -> mainly used in clearVeeringModel()
     func clearSessionData() {
+//        print(compassTrackings)
+//        print(timeIntervals)
         compassTrackings.removeAll() // Removes the previous session's trackers
         timeIntervals.removeAll() // Clears time slots
         totalTime = 0
