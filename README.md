@@ -10,5 +10,5 @@ Since this application is not on TestFlight yet - to test the application, simpl
 Then load the app onto your phone, and accept developer writing permissions.
 
 ```
-General >> Profiles >> Trust
+System Preferences >> General >> Profiles >> Trust
 ```
