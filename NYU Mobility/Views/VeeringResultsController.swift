@@ -44,12 +44,16 @@ class VeeringResultsController: UIViewController {
     // Constants used to draw the graphic
     //
     
-    // CONSTANT for how wide the veering should be - this should not be too high
-    // to avoid clipping
+    /**
+     CONSTANT for how wide the veering should be - this should not be too high
+     to avoid clipping
+     X_MOVE less than 10 -> Super narrow
+     X_MOVE less than 20 -> Relatively narrow but can distinguish slight changes in movement
+     Keep at 25 - 30 for best results
+     */
     let X_MOVE: Double = 25.0
     
-    // CONSTANT for how tall the veering height should be - this should also not be too high
-    // to avoid clipping
+    // CONSTANT for how tall the veering height should be - currently true to screen
     let Y_MOVE: Double = 1.0
     
     override func viewDidLoad() {
@@ -112,9 +116,13 @@ class VeeringResultsController: UIViewController {
         let dTheta = min(abs(startTheta - endTheta), abs(360 - startTheta + endTheta))
         let estVeer = abs(sin(dTheta) * Double(distance))
         
-        veeringLabel.text = "Estimated Veering: \(estVeer.truncate(places: 2)) m, dTheta: \(dTheta.truncate(places: 2))°"
+        // Main label that returns calculated results based on data collected
+        veeringLabel.text = """
+                            Estimated Veering: \(estVeer.truncate(places: 2)) m, \
+                            Change of Angle: \(dTheta.truncate(places: 2))°
+                            """
         
-        // This indicates veering to the left - more left derivative values
+        // This indicates veering to the left - more left slope changes
         if (lC > rC) {
             drawVeeringModel(Direction.left)
         } else if (rC > lC) {
@@ -134,23 +142,26 @@ class VeeringResultsController: UIViewController {
      There are also a lot of visual calculations that are made using the arrays for orientation and time stamps
      */
     func drawVeeringModel(_ direction: Direction) {
-        let heightWidth = veeringModel.frame.size.width
+        // MAKE SURE TO DISTINGUISH THESE TWO
+        let height = veeringModel.frame.size.height
+        let width = veeringModel.frame.size.width
+        
         let path = CGMutablePath()
         
         let hLen: Int = compassTrackings.count
-        let changeY: Double = Double(heightWidth)
+        let changeY: Double = Double(height)
         var deltaY: Double = 0.0
         
         // Used to move the path a certain amount based on prior compass
         // trackings
-        var newX: Double = Double(heightWidth) / 2.0
-        var newY: Double = Double(heightWidth)
+        var newX: Double = Double(width) / 2
+        var newY: Double = Double(height)
         
         var xChanges: [Double] = []
         var xTotal: Double = 0.0
         
         if (direction == .left) {
-            path.move(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            path.move(to: CGPoint(x: width / 2, y: height))
             
             // This is where the calculations are made
             for i in 1 ..< hLen {
@@ -177,8 +188,8 @@ class VeeringResultsController: UIViewController {
             
             // This completes the triangle
             path.addLine(to: CGPoint(x: newX, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            path.addLine(to: CGPoint(x: width / 2, y: 0))
+            path.addLine(to: CGPoint(x: width / 2, y: height))
             
             let shape = CAShapeLayer()
             shape.path = path
@@ -188,7 +199,7 @@ class VeeringResultsController: UIViewController {
             veeringModel.layer.insertSublayer(shape, at: 0)
         } else if (direction == .right) {
             
-            path.move(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            path.move(to: CGPoint(x: width / 2, y: height))
             
             // This is where the calculations are made
             for i in 1 ..< hLen {
@@ -216,8 +227,8 @@ class VeeringResultsController: UIViewController {
 
             // This completes the triangle
             path.addLine(to: CGPoint(x: newX, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth / 2, y: 0))
-            path.addLine(to: CGPoint(x: heightWidth / 2, y: heightWidth))
+            path.addLine(to: CGPoint(x: width / 2, y: 0))
+            path.addLine(to: CGPoint(x: width / 2, y: height))
             
             let shape = CAShapeLayer()
             shape.path = path
