@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Kw-ZQ-iXN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Kw-ZQ-iXN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +12,7 @@
         <!--Start Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="StartController" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StartController" customModule="NYU_Mobility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="width" constant="128" id="zNA-o9-hwZ"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naD-Ic-mw2" customClass="BubbleButton" customModule="NYU_Mobility_3" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naD-Ic-mw2" customClass="BubbleButton" customModule="NYU_Mobility" customModuleProvider="target">
                                 <rect key="frame" x="40" y="323" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ADk-bO-8MP"/>
@@ -35,7 +35,7 @@
                                     <action selector="button1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wOB-Er-hvs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAE-ms-lg6" customClass="BubbleButton" customModule="NYU_Mobility_3" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAE-ms-lg6" customClass="BubbleButton" customModule="NYU_Mobility" customModuleProvider="target">
                                 <rect key="frame" x="40" y="423" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="OEo-0P-0Jn"/>
@@ -46,7 +46,7 @@
                                     <action selector="button2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q8X-ZY-wOT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4B4-UD-hpu" customClass="BubbleButton" customModule="NYU_Mobility_3" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4B4-UD-hpu" customClass="BubbleButton" customModule="NYU_Mobility" customModuleProvider="target">
                                 <rect key="frame" x="40" y="523" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ADx-Rw-ZI8"/>
@@ -90,29 +90,78 @@
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="105.80357142857143"/>
         </scene>
+        <!--Veering Results Controller-->
+        <scene sceneID="Qg3-t5-bp1">
+            <objects>
+                <viewController id="oaY-rZ-8Ms" customClass="VeeringResultsController" customModule="NYU_Mobility" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zfk-lG-xr0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session is complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpm-0A-9c7">
+                                <rect key="frame" x="131" y="113" width="152" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veering detected: 0 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ag-Gy-xaV">
+                                <rect key="frame" x="122.5" y="159" width="169" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Uh-31-dW8">
+                                <rect key="frame" x="50" y="230" width="314" height="582"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JsS-Pk-XPW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JsS-Pk-XPW" firstAttribute="trailing" secondItem="3Uh-31-dW8" secondAttribute="trailing" constant="50" id="2fm-S9-RwB"/>
+                            <constraint firstItem="3Uh-31-dW8" firstAttribute="top" secondItem="3Ag-Gy-xaV" secondAttribute="bottom" constant="50" id="45o-ul-IkT"/>
+                            <constraint firstItem="3Uh-31-dW8" firstAttribute="leading" secondItem="JsS-Pk-XPW" secondAttribute="leading" constant="50" id="8je-MO-hML"/>
+                            <constraint firstItem="wpm-0A-9c7" firstAttribute="centerX" secondItem="zfk-lG-xr0" secondAttribute="centerX" id="EmQ-TX-g6v"/>
+                            <constraint firstItem="JsS-Pk-XPW" firstAttribute="bottom" secondItem="3Uh-31-dW8" secondAttribute="bottom" constant="50" id="KjI-H4-vfE"/>
+                            <constraint firstItem="3Ag-Gy-xaV" firstAttribute="top" secondItem="wpm-0A-9c7" secondAttribute="bottom" constant="25" id="LLO-q0-i6K"/>
+                            <constraint firstItem="wpm-0A-9c7" firstAttribute="top" secondItem="JsS-Pk-XPW" secondAttribute="top" constant="25" id="oLn-1c-PcC"/>
+                            <constraint firstItem="3Ag-Gy-xaV" firstAttribute="centerX" secondItem="zfk-lG-xr0" secondAttribute="centerX" id="ujR-zS-o1O"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uQK-zh-ctd"/>
+                    <connections>
+                        <outlet property="sessionLabel" destination="wpm-0A-9c7" id="XoE-XT-692"/>
+                        <outlet property="veeringLabel" destination="3Ag-Gy-xaV" id="lXW-eI-oSv"/>
+                        <outlet property="veeringModel" destination="3Uh-31-dW8" id="YH5-Yx-tXl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="77F-JL-NG0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="876.81159420289862" y="-1322.5446428571429"/>
+        </scene>
         <!--Debug Controller-->
         <scene sceneID="xPw-xi-jpn">
             <objects>
-                <viewController id="4fY-lx-tMQ" customClass="DebugController" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4fY-lx-tMQ" customClass="DebugController" customModule="NYU_Mobility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PGe-fZ-UTN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcq-pt-p2T">
-                                <rect key="frame" x="190" y="433" width="34" height="30"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="switchState:" destination="4fY-lx-tMQ" eventType="touchUpInside" id="qgd-7X-6I1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veering detected: 0 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5A-kW-tJ4">
-                                <rect key="frame" x="122.5" y="387" width="169" height="21"/>
+                                <rect key="frame" x="122.5" y="234" width="169" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Not Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytY-8H-4SY">
-                                <rect key="frame" x="122" y="341" width="170" height="21"/>
+                                <rect key="frame" x="122" y="188" width="170" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -125,14 +174,16 @@
                         <viewLayoutGuide key="safeArea" id="nbX-6L-cGB"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Kcq-pt-p2T" firstAttribute="centerY" secondItem="PGe-fZ-UTN" secondAttribute="centerY" id="84i-mP-h5y"/>
-                            <constraint firstItem="Kcq-pt-p2T" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="BCD-V7-6X7"/>
-                            <constraint firstItem="Kcq-pt-p2T" firstAttribute="top" secondItem="i5A-kW-tJ4" secondAttribute="bottom" constant="25" id="Fi9-pA-Q9Y"/>
+                            <constraint firstItem="Kcq-pt-p2T" firstAttribute="trailing" secondItem="nbX-6L-cGB" secondAttribute="trailing" id="5mi-NK-vJj"/>
+                            <constraint firstItem="ytY-8H-4SY" firstAttribute="top" secondItem="nbX-6L-cGB" secondAttribute="top" constant="100" id="A3r-nf-Yqe"/>
+                            <constraint firstAttribute="bottom" secondItem="Kcq-pt-p2T" secondAttribute="bottom" id="B8l-0m-eXS"/>
+                            <constraint firstItem="Kcq-pt-p2T" firstAttribute="top" secondItem="nbX-6L-cGB" secondAttribute="top" id="IBW-k4-P7a"/>
+                            <constraint firstItem="fnB-EX-FBX" firstAttribute="top" secondItem="i5A-kW-tJ4" secondAttribute="bottom" constant="258" id="LSx-H5-P2O"/>
                             <constraint firstItem="ytY-8H-4SY" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="Vcc-ar-HQ0"/>
-                            <constraint firstItem="nbX-6L-cGB" firstAttribute="bottom" secondItem="fnB-EX-FBX" secondAttribute="bottom" constant="50" id="e0t-ye-D6C"/>
                             <constraint firstItem="i5A-kW-tJ4" firstAttribute="top" secondItem="ytY-8H-4SY" secondAttribute="bottom" constant="25" id="iLd-fR-tby"/>
                             <constraint firstItem="i5A-kW-tJ4" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="ims-lD-3cf"/>
-                            <constraint firstItem="fnB-EX-FBX" firstAttribute="top" secondItem="Kcq-pt-p2T" secondAttribute="bottom" constant="50" id="ngs-Br-xPz"/>
+                            <constraint firstItem="nbX-6L-cGB" firstAttribute="bottom" secondItem="fnB-EX-FBX" secondAttribute="bottom" constant="50" id="m3O-nm-LKH"/>
+                            <constraint firstItem="Kcq-pt-p2T" firstAttribute="leading" secondItem="nbX-6L-cGB" secondAttribute="leading" id="mkG-oR-Arc"/>
                             <constraint firstItem="fnB-EX-FBX" firstAttribute="leading" secondItem="nbX-6L-cGB" secondAttribute="leading" constant="50" id="oPn-s9-bkD"/>
                             <constraint firstItem="nbX-6L-cGB" firstAttribute="trailing" secondItem="fnB-EX-FBX" secondAttribute="trailing" constant="50" id="pRR-pE-iWc"/>
                         </constraints>
@@ -143,6 +194,7 @@
                         <outlet property="trackButton" destination="Kcq-pt-p2T" id="p3y-3W-oeG"/>
                         <outlet property="veeringLabel" destination="i5A-kW-tJ4" id="j2F-b6-piz"/>
                         <outlet property="veeringModel" destination="fnB-EX-FBX" id="aHf-5Y-Nni"/>
+                        <segue destination="oaY-rZ-8Ms" kind="show" identifier="ShowVeeringResults" id="9gr-gs-esB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5SV-eV-FG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -152,7 +204,7 @@
         <!--Tracker1 Controller-->
         <scene sceneID="2UU-e6-tyZ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Q2Q-JD-Xgd" customClass="Tracker1Controller" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Q2Q-JD-Xgd" customClass="Tracker1Controller" customModule="NYU_Mobility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NHx-r5-LKr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +253,7 @@
         <!--Tracker2 Controller-->
         <scene sceneID="dpb-az-d9b">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="kjU-c0-aFq" customClass="Tracker2Controller" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="kjU-c0-aFq" customClass="Tracker2Controller" customModule="NYU_Mobility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CJf-LH-fmE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,7 +303,7 @@
         <!--Share Controller-->
         <scene sceneID="bkw-GM-bs4">
             <objects>
-                <viewController id="Mgf-8a-wIJ" customClass="ShareController" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Mgf-8a-wIJ" customClass="ShareController" customModule="NYU_Mobility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PQT-5b-aoQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -283,7 +335,7 @@
         <!--Settings Controller-->
         <scene sceneID="cMV-YY-6tg">
             <objects>
-                <tableViewController id="RVV-qQ-ewA" customClass="SettingsController" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="RVV-qQ-ewA" customClass="SettingsController" customModule="NYU_Mobility" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BUj-rw-aAa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,7 +344,7 @@
                             <tableViewSection headerTitle="Basic Settings" id="mPm-0a-hEa">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uLg-iA-U7v">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uLg-iA-U7v" id="hHB-O4-aNa">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -333,7 +385,7 @@
                             <tableViewSection headerTitle="Accessibility Settings" id="xpn-TT-9Ej">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iaK-WQ-8QF">
-                                        <rect key="frame" x="0.0" y="127.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="117.00000034679067" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iaK-WQ-8QF" id="bP0-Ia-B9B">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -383,7 +435,7 @@
         <!--Tracker3 Controller-->
         <scene sceneID="O7S-Mw-QzX">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="pRH-1x-5mh" customClass="Tracker3Controller" customModule="NYU_Mobility_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="pRH-1x-5mh" customClass="Tracker3Controller" customModule="NYU_Mobility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fNW-VP-mlG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

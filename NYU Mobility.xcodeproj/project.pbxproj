@@ -17,6 +17,7 @@
 		A149576925CE094C006BBFAC /* Gyro.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576825CE094C006BBFAC /* Gyro.swift */; };
 		A149576E25CE0972006BBFAC /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576D25CE0972006BBFAC /* Point.swift */; };
 		A156B68B26120E3400E17DC8 /* DebugController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A156B68A26120E3400E17DC8 /* DebugController.swift */; };
+		A16DFCDC26430EA200180219 /* VeeringResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DFCDB26430EA200180219 /* VeeringResultsController.swift */; };
 		A1924DA4263843B10019DD7D /* TimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1924DA3263843B10019DD7D /* TimeSince.swift */; };
 		A1B2EB79263B9A6F001433C0 /* Double+Truncate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */; };
 		A1B2EB7B263C43BA001433C0 /* InputDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2EB7A263C43BA001433C0 /* InputDialog.swift */; };
@@ -47,6 +48,7 @@
 		A149576825CE094C006BBFAC /* Gyro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gyro.swift; sourceTree = "<group>"; };
 		A149576D25CE0972006BBFAC /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		A156B68A26120E3400E17DC8 /* DebugController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugController.swift; sourceTree = "<group>"; };
+		A16DFCDB26430EA200180219 /* VeeringResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeeringResultsController.swift; sourceTree = "<group>"; };
 		A1924DA3263843B10019DD7D /* TimeSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSince.swift; sourceTree = "<group>"; };
 		A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Truncate.swift"; sourceTree = "<group>"; };
 		A1B2EB7A263C43BA001433C0 /* InputDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDialog.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				A1B9168C25CE111400D8D8D7 /* StartController.swift */,
 				A1B916A125CE38E200D8D8D7 /* ShareController.swift */,
 				A10AE4CA2610D1A6004BB906 /* SettingsController.swift */,
+				A16DFCDB26430EA200180219 /* VeeringResultsController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				A1B9169C25CE295C00D8D8D7 /* Tracker3Controller.swift in Sources */,
 				A1B2EB79263B9A6F001433C0 /* Double+Truncate.swift in Sources */,
 				A1B2EB7B263C43BA001433C0 /* InputDialog.swift in Sources */,
+				A16DFCDC26430EA200180219 /* VeeringResultsController.swift in Sources */,
 				A1B9168925CE0BDF00D8D8D7 /* String+Indexing.swift in Sources */,
 				A1B9169925CE294900D8D8D7 /* Tracker2Controller.swift in Sources */,
 				A1B9167F25CE0B6800D8D8D7 /* Colors.swift in Sources */,

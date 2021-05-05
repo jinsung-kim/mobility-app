@@ -1,36 +1,23 @@
 //
-//  DebugController.swift
-//  NYU Mobility 3
+//  VeeringResultsController.swift
+//  NYU Mobility
 //
-//  A standard tracker like the no video controller that does real time
-//  detection of possible veering by showing a graph
-//
-//  Created by Jin Kim on 3/29/21.
+//  Created by Jin Kim on 5/5/21.
 //
 
 import UIKit
-import CoreLocation
-import CoreMotion
 
-// Used to determine what direction the veering was done
-enum Direction {
-    case left
-    case right
-    case straight
-}
-
-/// This is the view controller that controls the veering session
-class DebugController: UIViewController, CLLocationManagerDelegate {
+/// After the veering session is completed -> The app will redirect to this screen for the user to see the results
+/// We are placing this here now because the session tracking screen will have one giant button
+class VeeringResultsController: UIViewController {
     
-    // Treat as flag for state:
-    // 0 - start tracking
-    // 1 - stop tracking
-    // 2 - show results
-    var state: Int = 0
+    @IBOutlet weak var sessionLabel: UILabel!
+    @IBOutlet weak var veeringLabel: UILabel!
     
-    // Managers that will be called when tracking begins
-    private let locationManager: CLLocationManager = CLLocationManager()
-    private let pedometer: CMPedometer = CMPedometer()
+    @IBOutlet weak var veeringModel: UIView!
+    
+    // Orientation Array
+    private var compassTrackings: [Double] = []
     
     // Veering in a particular direction
     var distance: Int = 0
@@ -50,64 +37,16 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     // to avoid clipping
     let Y_MOVE: Double = 1
     
-    // The view where the graphic is drawn to show veering
-    @IBOutlet weak var veeringModel: UIView!
-    
-    // Labels for debugging process
-    @IBOutlet weak var sessionStatusLabel: UILabel!
-    @IBOutlet weak var veeringLabel: UILabel!
-    
-    // Buttons to start and stop sessions
-    @IBOutlet weak var trackButton: UIButton!
-    
-    // Orientation Array
-    private var compassTrackings: [Double] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-    }
-    
-    // Edge case: If the session runs so long that this is called -> Simply clear the data
-    // Ideally this would never happen
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        
     }
     
     /**
-     The state of the tracking session.
-     0 - Default state (not recording or tracking anything - but transitions into starting the session)
-     1 - Tracking is in session. Once this is pressed the session is stopped
-     2 - Completes the session and adds the information about the veering (d theta)
-     */
-    @IBAction func switchState(_ sender: UIButton) {
-        switch(self.state) {
-        case 0:
-            setup()
-            currTime = getCurrentMillis()
-            sender.setTitle("Stop", for: .normal)
-            self.state = 1
-        case 1:
-            stopTracking()
-            sender.setTitle("Restart", for: .normal)
-            self.state = 2
-        case 2:
-            sessionStatusLabel.text = "Session completed"
-            sender.setTitle("Start", for: .normal)
-            self.state = 0
-        default: // Should never happen
-            print("Unexpected case: \(self.state)")
-        }
-    }
-    
-    /**
-     After the session is completed - the location manager is stopped (stopping the steps, distance, and compass trackers)
-     Then, the calculations are made and veering is detected (either in left and right)
+     After the session is completed: the calculations are made and veering is detected (either in left and right)
      Finally, the draw veering model function is called -> which will draw out the graphic for the actual veering
      */
     func stopTracking() {
-        locationManager.stopUpdatingHeading()
-        locationManager.stopUpdatingLocation()
         
         // Edge cases
         // No calculations to make if session was too short or perfect
@@ -162,53 +101,6 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             // Overall no veering detected (net zero)
             drawVeeringModel(Direction.straight)
         }
-    }
-    
-    // Called when we want to start counting the steps
-    func startCountingSteps() {
-        pedometer.startUpdates(from: Date()) {
-          [weak self] pedometerData, error in
-          guard let pedometerData = pedometerData, error == nil else { return }
-            // Runs concurrently
-            DispatchQueue.main.async {
-                self?.distance = Int(truncating: pedometerData.distance ?? 0)
-            }
-        }
-    }
-    
-    // Calls all the functions needed to start a session
-    // This is the main function that is used when the button is pressed (IBAction handler)
-    func setup() {
-        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.headingAvailable() {
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
-        }
-        
-        startCountingSteps()
-        
-        // If multiple sessions done at once -> we want to clear out the area
-        // for the new session (no overwriting)
-        clearVeeringModel()
-    }
-    
-    // Called everytime the compass is moved at least 1 degrees in a particular direction
-    // We get a time stamp -> And then we also store the new compass value
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        // Consider averaging the last 5 values of this - to ensure that there are no outliers?
-        let curr = newHeading.magneticHeading
-        
-        compassTrackings.append(curr)
-        
-        // Used to get the time split
-        let now = getCurrentMillis()
-        let timeSplit = now - currTime!
-        totalTime += timeSplit
-        
-        timeIntervals.append(timeSplit)
-        
-        currTime = now
     }
     
     /**
@@ -311,13 +203,14 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
 
             veeringModel.layer.insertSublayer(shape, at: 0)
         }
-//        print(timeIntervals)
     }
     
     /**
      This function is used to clear the veering model and all of its corresponding variables
      This includes the compass trackings, time interval trackings, and the total time that is an
      accumulated sum
+     
+     Use this when leaving the screen to start a new session
      */
     func clearVeeringModel() {
         guard let sublayers = veeringModel.layer.sublayers else { return }
