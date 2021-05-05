@@ -116,7 +116,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JsS-Pk-XPW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="JsS-Pk-XPW" firstAttribute="trailing" secondItem="3Uh-31-dW8" secondAttribute="trailing" constant="50" id="2fm-S9-RwB"/>
                             <constraint firstItem="3Uh-31-dW8" firstAttribute="top" secondItem="3Ag-Gy-xaV" secondAttribute="bottom" constant="50" id="45o-ul-IkT"/>
@@ -154,46 +154,19 @@
                                     <action selector="switchState:" destination="4fY-lx-tMQ" eventType="touchUpInside" id="qgd-7X-6I1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veering detected: 0 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5A-kW-tJ4">
-                                <rect key="frame" x="122.5" y="234" width="169" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session Not Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytY-8H-4SY">
-                                <rect key="frame" x="122" y="188" width="170" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-EX-FBX">
-                                <rect key="frame" x="50" y="513" width="314" height="299"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nbX-6L-cGB"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Kcq-pt-p2T" firstAttribute="trailing" secondItem="nbX-6L-cGB" secondAttribute="trailing" id="5mi-NK-vJj"/>
-                            <constraint firstItem="ytY-8H-4SY" firstAttribute="top" secondItem="nbX-6L-cGB" secondAttribute="top" constant="100" id="A3r-nf-Yqe"/>
                             <constraint firstAttribute="bottom" secondItem="Kcq-pt-p2T" secondAttribute="bottom" id="B8l-0m-eXS"/>
                             <constraint firstItem="Kcq-pt-p2T" firstAttribute="top" secondItem="nbX-6L-cGB" secondAttribute="top" id="IBW-k4-P7a"/>
-                            <constraint firstItem="fnB-EX-FBX" firstAttribute="top" secondItem="i5A-kW-tJ4" secondAttribute="bottom" constant="258" id="LSx-H5-P2O"/>
-                            <constraint firstItem="ytY-8H-4SY" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="Vcc-ar-HQ0"/>
-                            <constraint firstItem="i5A-kW-tJ4" firstAttribute="top" secondItem="ytY-8H-4SY" secondAttribute="bottom" constant="25" id="iLd-fR-tby"/>
-                            <constraint firstItem="i5A-kW-tJ4" firstAttribute="centerX" secondItem="PGe-fZ-UTN" secondAttribute="centerX" id="ims-lD-3cf"/>
-                            <constraint firstItem="nbX-6L-cGB" firstAttribute="bottom" secondItem="fnB-EX-FBX" secondAttribute="bottom" constant="50" id="m3O-nm-LKH"/>
                             <constraint firstItem="Kcq-pt-p2T" firstAttribute="leading" secondItem="nbX-6L-cGB" secondAttribute="leading" id="mkG-oR-Arc"/>
-                            <constraint firstItem="fnB-EX-FBX" firstAttribute="leading" secondItem="nbX-6L-cGB" secondAttribute="leading" constant="50" id="oPn-s9-bkD"/>
-                            <constraint firstItem="nbX-6L-cGB" firstAttribute="trailing" secondItem="fnB-EX-FBX" secondAttribute="trailing" constant="50" id="pRR-pE-iWc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xYO-74-gOm"/>
                     <connections>
-                        <outlet property="sessionStatusLabel" destination="ytY-8H-4SY" id="IKZ-gN-jU7"/>
                         <outlet property="trackButton" destination="Kcq-pt-p2T" id="p3y-3W-oeG"/>
-                        <outlet property="veeringLabel" destination="i5A-kW-tJ4" id="j2F-b6-piz"/>
-                        <outlet property="veeringModel" destination="fnB-EX-FBX" id="aHf-5Y-Nni"/>
                         <segue destination="oaY-rZ-8Ms" kind="show" identifier="ShowVeeringResults" id="9gr-gs-esB"/>
                     </connections>
                 </viewController>

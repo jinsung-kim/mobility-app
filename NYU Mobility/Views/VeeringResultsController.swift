@@ -7,6 +7,13 @@
 
 import UIKit
 
+// Used to determine what direction the veering was done
+enum Direction {
+    case left
+    case right
+    case straight
+}
+
 /// After the veering session is completed -> The app will redirect to this screen for the user to see the results
 /// We are placing this here now because the session tracking screen will have one giant button
 class VeeringResultsController: UIViewController {
@@ -16,18 +23,26 @@ class VeeringResultsController: UIViewController {
     
     @IBOutlet weak var veeringModel: UIView!
     
-    // Orientation Array
-    private var compassTrackings: [Double] = []
-    
     // Veering in a particular direction
     var distance: Int = 0
     
-    // Used to calculate time between two compass data points
-    var currTime: Int!
-    // Used as a method of regularization when the graphic is drawn (to ensure that it fits into the frame)
+    //
+    // All of the data below is not created here but passed into the
+    // view from DebugController.swift where the data is collected
+    // through the location manager
+    //
+    
+    // Used as a method of regularization when the graphic is drawn
+    // (to ensure that it fits into the frame)
     var totalTime: Int = 0
     // Used to store the history of each interval to draw out
     var timeIntervals: [Int] = []
+    // Orientation Array
+    var compassTrackings: [Double] = []
+    
+    //
+    // Constants used to draw the graphic
+    //
     
     // CONSTANT for how wide the veering should be - this should not be too high
     // to avoid clipping
@@ -35,18 +50,23 @@ class VeeringResultsController: UIViewController {
     
     // CONSTANT for how tall the veering height should be - this should also not be too high
     // to avoid clipping
-    let Y_MOVE: Double = 1
+    let Y_MOVE: Double = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        calculateVeering()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true) // animates view disappearing
+        clearVeeringModel()
     }
     
     /**
      After the session is completed: the calculations are made and veering is detected (either in left and right)
      Finally, the draw veering model function is called -> which will draw out the graphic for the actual veering
      */
-    func stopTracking() {
+    func calculateVeering() {
         
         // Edge cases
         // No calculations to make if session was too short or perfect
@@ -69,9 +89,11 @@ class VeeringResultsController: UIViewController {
         
         for i in 1 ..< compassTrackings.count {
             curr = compassTrackings[i]
-            if (prev >= 0 && prev < 5 && curr > 355) { // Crossing North threshold (l -> r)
+            // Crossing North threshold (l -> r)
+            if (prev >= 0 && prev < 5 && curr > 355) {
                 lC += 1
-            } else if (prev > 355 && curr >= 0 && curr < 5) { // Crossing (r -> l)
+            // Crossing (r -> l)
+            } else if (prev > 355 && curr >= 0 && curr < 5) {
                 rC += 1
             } else if (curr > prev) {
                 rC += 1
@@ -116,7 +138,6 @@ class VeeringResultsController: UIViewController {
         let path = CGMutablePath()
         
         let hLen: Int = compassTrackings.count
-//        let changeY: Double = Double(heightWidth) / Double(hLen) -> Only use for setting all lengths to same size
         let changeY: Double = Double(heightWidth)
         var deltaY: Double = 0.0
         
@@ -161,7 +182,8 @@ class VeeringResultsController: UIViewController {
             
             let shape = CAShapeLayer()
             shape.path = path
-            shape.fillColor = UIColor.red.cgColor // Color that the triangle is filled in
+            // Color that the triangle is filled in
+            shape.fillColor = UIColor.red.cgColor
             
             veeringModel.layer.insertSublayer(shape, at: 0)
         } else if (direction == .right) {
@@ -199,7 +221,8 @@ class VeeringResultsController: UIViewController {
             
             let shape = CAShapeLayer()
             shape.path = path
-            shape.fillColor = UIColor.blue.cgColor // Color that the triangle is filled in
+            // Color that the triangle is filled in
+            shape.fillColor = UIColor.blue.cgColor
 
             veeringModel.layer.insertSublayer(shape, at: 0)
         }
@@ -221,9 +244,9 @@ class VeeringResultsController: UIViewController {
     }
     
     // Clears all the session data -> mainly used in clearVeeringModel()
+    // Used as a safety measure, ideally the values would be overridden in the
+    // prepare function
     func clearSessionData() {
-//        print(compassTrackings)
-//        print(timeIntervals)
         compassTrackings.removeAll() // Removes the previous session's trackers
         timeIntervals.removeAll() // Clears time slots
         totalTime = 0
