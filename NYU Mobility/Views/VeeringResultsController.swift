@@ -61,16 +61,81 @@ class VeeringResultsController: UIViewController {
         calculateVeering()
     }
     
+    // Clears the view when this screen is no longer visible
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true) // animates view disappearing
         clearVeeringModel()
     }
     
     /**
+     After the session is completed: the compass trackings are looked at and averaged
+     to deal with noise that is correlated with a session starting/ending
+     
+     Currently the assumption of this model is that the first 5 seconds will be for setting up the session.
+     The last 5 seconds will also be for dismounting/stopping the session.
+     
+     This assumption can be tweaked by changing the time variable that is used within
+     the function.
+     
+     If the session is shorter than the seconds to watch for -> simply return the not averaged first and last values
+     
+     - Parameters:
+        None
+     - Returns:
+        Tuple(Double, Double) -> First tuple value is the first 5 second average
+        The second is the last 5 second average
+     */
+    func getCompassAverages() -> (Double, Double) {
+        let secondsWatched: Int = 3 // Change this for shorter/longer times (TESTING AT 3)
+        
+        let target: Int = secondsWatched * 1000 // Target time in milliseconds
+        
+        // Case that the total session time was not long enough
+        if (totalTime <= target) {
+            // Not enough compass trackings
+            if (compassTrackings.count < 2) {
+                return (0.0, 0.0)
+            }
+            // Simply return the first and last values
+            return (compassTrackings.first!, compassTrackings.last!)
+        }
+        
+        // Subtract from these values
+        var startTime: Int = target
+        var endTime: Int = target
+        
+        var startAverage: Double = 0.0
+        var endAverage: Double = 0.0
+        
+        var i = 0
+        while (startTime > 0) {
+            startTime -= timeIntervals[i]
+            i += 1
+            
+            startAverage += compassTrackings[i]
+        }
+        
+        startAverage /= Double(i - 1) // Average
+        
+        // Same as start but go backwards
+        i = timeIntervals.count - 1
+        while (endTime > 0) {
+            endTime -= timeIntervals[i]
+            i -= 1
+            
+            endAverage += compassTrackings[i]
+        }
+        
+        endAverage /= Double(i - 1) // Average
+        
+        return (startAverage, endAverage)
+    }
+    
+    /**
      After the session is completed: the calculations are made and veering is detected (either in left and right)
      Finally, the draw veering model function is called -> which will draw out the graphic for the actual veering
      */
-    func calculateVeering() {
+    func calculateVeering() {
         
         // Edge cases
         // No calculations to make if session was too short or perfect
@@ -142,7 +207,7 @@ class VeeringResultsController: UIViewController {
      There are also a lot of visual calculations that are made using the arrays for orientation and time stamps
      */
     func drawVeeringModel(_ direction: Direction) {
-        // MAKE SURE TO DISTINGUISH THESE TWO
+        // MAKE SURE TO DISTINGUISH THESE TWO -> WHEN NOT A SQUARE
         let height = veeringModel.frame.size.height
         let width = veeringModel.frame.size.width
         
