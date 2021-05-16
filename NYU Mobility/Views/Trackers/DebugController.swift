@@ -11,6 +11,7 @@
 import UIKit
 import CoreLocation
 import CoreMotion
+import AVFoundation
 
 /// This is the view controller that controls the veering session
 class DebugController: UIViewController, CLLocationManagerDelegate {
@@ -20,6 +21,14 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     // 1 - stop tracking
     // 2 - show results
     var state: Int = 0
+    
+    // Amount of time that needs to pass before data is collected
+    var secondsRemaining: Int = 10
+    
+    // Time when the warning is given -> 3 or 5 recommended
+    // Cannot be less than 3 (will be caught in assert below)
+    // This is so that the speaking messages will not overlap or be cut off
+    var startWarning: Int = 3
     
     // Managers that will be called when tracking begins
     private let locationManager: CLLocationManager = CLLocationManager()
@@ -62,8 +71,33 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     @IBAction func switchState(_ sender: UIButton) {
         switch(self.state) {
         case 0: // Start tracking
-            setup()
-            currTime = getCurrentMillis()
+            
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+                
+                // If the counter goes below a certain time, a function will be triggered
+                if (self.secondsRemaining > 0) {
+                    print ("\(self.secondsRemaining) seconds") // For debugging purposes
+                    
+                    // Reads the message out loud to the user that the session is going to begin soon
+                    if (self.secondsRemaining == self.startWarning) {
+                        assert(self.startWarning >= 3)
+                        self.speakMessage("Session starting in \(self.startWarning) seconds")
+                    }
+                    
+                    self.secondsRemaining -= 1
+                // In this case: the set up function where data is collected is triggered.
+                } else if (self.secondsRemaining == 0) { // Time to begin the session
+                    
+                    self.setup() // Starts the tracking process
+                    
+                    // Reads the message out loud to the user that the session has begun
+                    self.speakMessage("Starting the session now")
+                    
+                    // Invalidate the timer
+                    Timer.invalidate()
+                }
+            }
+            
             sender.setTitle("Stop", for: .normal)
             self.state = 1
         case 1: // Stops tracking -> session is complete
@@ -108,6 +142,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     // (IBAction handler)
     func setup() {
         locationManager.requestWhenInUseAuthorization()
+        
+        currTime = getCurrentMillis()
         
         if CLLocationManager.headingAvailable() {
             locationManager.startUpdatingLocation()
@@ -160,5 +196,24 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
                 next.compassTrackings = self.compassTrackings
             }
         }
+    }
+    
+    /**
+     Accessibility (Sound) Features
+     By default, this view controller does not check if the user has the setting enabled,
+     due to the fact that this is a critical portion of the application's functionality
+     
+     - Parameters:
+        - message: The string that we want the voice to say
+     
+     - Returns: Nothing
+     */
+    
+    func speakMessage(_ message: String) {
+        let utterance = AVSpeechUtterance(string: message)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
     }
 }

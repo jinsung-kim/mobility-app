@@ -79,6 +79,8 @@ class VeeringResultsController: UIViewController {
      
      If the session is shorter than the seconds to watch for -> simply return the not averaged first and last values
      
+     Assumption: 30 secs - 2 minutes
+     
      - Parameters:
         None
      - Returns:
