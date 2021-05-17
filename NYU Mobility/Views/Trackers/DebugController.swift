@@ -26,9 +26,9 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     var secondsRemaining: Int = 10
     
     // Time when the warning is given -> 3 or 5 recommended
-    // Cannot be less than 3 (will be caught in assert below)
+    // Cannot be less than 3 (will be caught in assert below in testing mode)
     // This is so that the speaking messages will not overlap or be cut off
-    var startWarning: Int = 3
+    var startWarning: Int = 5
     
     // Managers that will be called when tracking begins
     private let locationManager: CLLocationManager = CLLocationManager()
@@ -72,31 +72,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         switch(self.state) {
         case 0: // Start tracking
             
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-                
-                // If the counter goes below a certain time, a function will be triggered
-                if (self.secondsRemaining > 0) {
-                    print ("\(self.secondsRemaining) seconds") // For debugging purposes
-                    
-                    // Reads the message out loud to the user that the session is going to begin soon
-                    if (self.secondsRemaining == self.startWarning) {
-                        assert(self.startWarning >= 3)
-                        self.speakMessage("Session starting in \(self.startWarning) seconds")
-                    }
-                    
-                    self.secondsRemaining -= 1
-                // In this case: the set up function where data is collected is triggered.
-                } else if (self.secondsRemaining == 0) { // Time to begin the session
-                    
-                    self.setup() // Starts the tracking process
-                    
-                    // Reads the message out loud to the user that the session has begun
-                    self.speakMessage("Starting the session now")
-                    
-                    // Invalidate the timer
-                    Timer.invalidate()
-                }
-            }
+            handleTimer(secondsRemaining, startWarning)
             
             sender.setTitle("Stop", for: .normal)
             self.state = 1
@@ -215,5 +191,43 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
 
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
+    }
+    
+    /**
+     Makes the timer start counting down
+     - Parameters:
+        - sc: The seconds remaining that will serve as the timer (how long you want the timer to count down)
+        - startWarning: The seconds that you want to start warning the user to get ready to begin the session
+     - Returns: Nothing, but timer is invalidated on its own
+     
+     Important assumption for testing: the start warning must be made at least three seconds in advance to the start
+     */
+    func handleTimer(_ sc: Int, _ startWarning: Int) {
+        var secondsRemaining: Int = sc // Copying the constant variable into a mutable counter
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+            
+            // If the counter goes below a certain time, a function will be triggered
+            if (secondsRemaining > 0) {
+                print ("\(secondsRemaining) seconds") // For debugging purposes
+                
+                // Reads the message out loud to the user that the session is going to begin soon
+                if (secondsRemaining == startWarning) {
+                    assert(startWarning >= 3)
+                    self.speakMessage("Session starting in \(startWarning) seconds")
+                }
+                
+                secondsRemaining -= 1
+            // In this case: the set up function where data is collected is triggered.
+            } else if (secondsRemaining == 0) { // Time to begin the session
+                
+                self.setup() // Starts the tracking process
+                
+                // Reads the message out loud to the user that the session has begun
+                self.speakMessage("Starting the session now")
+                
+                // Invalidate the timer
+                Timer.invalidate()
+            }
+        }
     }
 }
