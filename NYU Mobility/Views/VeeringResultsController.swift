@@ -59,6 +59,9 @@ class VeeringResultsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         calculateVeering()
+        
+        // Turn detection
+        calculateTurns()
     }
     
     // Clears the view when this screen is no longer visible
@@ -68,6 +71,8 @@ class VeeringResultsController: UIViewController {
     }
     
     /**
+     Currently unused -> Just conceptual
+     
      After the session is completed: the compass trackings are looked at and averaged
      to deal with noise that is correlated with a session starting/ending
      
@@ -117,7 +122,7 @@ class VeeringResultsController: UIViewController {
             startAverage += compassTrackings[i]
         }
         
-        startAverage /= Double(i - 1) // Average
+        startAverage /= Double(timeIntervals.count) // Average
         
         // Same as start but go backwards
         i = timeIntervals.count - 1
@@ -128,9 +133,22 @@ class VeeringResultsController: UIViewController {
             endAverage += compassTrackings[i]
         }
         
-        endAverage /= Double(i - 1) // Average
+        endAverage /= Double(timeIntervals.count) // Average
         
         return (startAverage, endAverage)
+    }
+    
+    /**
+     After the session is completed: the calculations are made to detect turning (either in left or right)
+     We differentiate a turn from veering by how sharp a movement is within a given time.
+     
+     Ex: If we detect slight changes in compass trackings over 10 seconds, we assume that this is veering
+     If we detect significant changes in compass trackings over 5 seconds, we assume that this is turning
+     
+     Currently this function uses a rule based system, but with a lot of collected data, we can be able to better calculate these values
+     */
+    func calculateTurns() {
+        
     }
     
     /**
