@@ -148,7 +148,71 @@ class VeeringResultsController: UIViewController {
      Currently this function uses a rule based system, but with a lot of collected data, we can be able to better calculate these values
      */
     func calculateTurns() {
+        let chunk: Int = timeIntervals.count / 5 // Chunk that we are currently working with
         
+        var i: Int = 0
+        var prev: Double = compassTrackings.first!, curr: Double = 0.0
+        // Left and right derivative counters
+        // We increment these counters for each left + right movement
+        var lC: Int = 0, rC: Int = 0, qT: Int = 0 // qT -> quick turn - used to analyze how fast the turns are
+        
+        while (i < timeIntervals.count) {
+            // Resets the counters every sliding window
+            lC = 0
+            rC = 0
+            qT = 0
+            for j in i ..< i + chunk { // Checks j chunks
+                if (j >= timeIntervals.count) { // Array out of bounds -> break out
+                    return
+                }
+                curr = compassTrackings[j]
+                // Crossing North threshold (l -> r)
+                if (prev >= 0 && prev < 5 && curr > 355) {
+                    lC += 1
+                // Crossing (r -> l)
+                } else if (prev > 355 && curr >= 0 && curr < 5) {
+                    rC += 1
+                } else if (curr > prev) {
+                    rC += 1
+                } else {
+                    lC += 1
+                }
+                prev = compassTrackings[j] // Update previous to be current after
+                
+                if (timeIntervals[j] < 30) { // thirty milliseconds (This is to be tested)
+                    qT += 1
+                }
+            }
+            
+            // Condition of turning
+            // a. Checking that a given subset of time intervals are all short
+            // b. Checking they are mostly moving in one direction (lC or rC)
+            
+            // a.
+            let quickTurnPercentage: Double = Double(qT) / Double(chunk)
+            
+            if (quickTurnPercentage >= 0.8) {
+                print("quick turn detected")
+            }
+            
+            // b.
+            
+            // If most of the movements are in one direction -> We can assume that there is something to view
+            // w.r.t. the size of the chunk (sliding window)
+            let leftPercentage: Double = Double(lC) / Double(chunk)
+            let rightPercentage: Double = Double(rC) / Double(chunk)
+            
+            if (leftPercentage >= 0.8) {
+                print("left turn detected")
+                return
+            }
+            
+            if (rightPercentage >= 0.8) {
+                print("right turn detected")
+            }
+            
+            i += chunk // Moves forward one sliding window
+        }
     }
     
     /**
