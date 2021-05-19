@@ -209,6 +209,7 @@ class VeeringResultsController: UIViewController {
             
             if (rightPercentage >= 0.8) {
                 print("right turn detected")
+                return 
             }
             
             i += chunk // Moves forward one sliding window
