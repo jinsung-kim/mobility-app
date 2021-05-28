@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 // Used to determine what direction the veering was done
 enum Direction {
@@ -80,11 +81,13 @@ class VeeringResultsController: UIViewController {
      - Parameters:
         - time (int): number of seconds to trim off at the end
      - Returns:
-        None
+        - Total time of the session
      */
     func trimEnding(_ time: Int) {
         var currTrimTime: Int = 0
         let CUT_OUT: Int = time * 1000
+        
+        
         
 //        print(compassTrackings.count)
         
@@ -108,8 +111,16 @@ class VeeringResultsController: UIViewController {
         None
      - Returns: JSON of all the collected data
      */
-    func convertToJSON() {
+    func convertToJSON() -> JSON {
+        var curr: Dictionary<String, [Any]> = [:]
         
+        // Setting all the keys and values
+        curr["timeIntervals"] = self.timeIntervals
+        curr["compassTrackings"] = self.compassTrackings
+        
+        let res: JSON = JSON(curr)
+        
+        return res
     }
     
     /**

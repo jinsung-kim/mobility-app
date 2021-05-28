@@ -365,7 +365,6 @@ class Tracker2Controller: UIViewController,
     func saveData(currTime: Date) {
         // JSON array implementation (See Point.swift for model)
         
-        
         points.append(Point(dateToString(), steps,
                             distance, avgPace, currPace,
                             currCad, locationArray,

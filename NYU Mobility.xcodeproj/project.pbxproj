@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		653A3338D232089ACA6565EE /* Pods_NYU_Mobility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC85BE0A98D789CE8C4EC4F /* Pods_NYU_Mobility.framework */; };
 		A10AE4CB2610D1A6004BB906 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AE4CA2610D1A6004BB906 /* SettingsController.swift */; };
 		A149574625CE0717006BBFAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574525CE0717006BBFAC /* AppDelegate.swift */; };
 		A149574825CE0717006BBFAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149574725CE0717006BBFAC /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		560113D37EA9E6FC513BB510 /* Pods-NYU Mobility.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYU Mobility.release.xcconfig"; path = "Target Support Files/Pods-NYU Mobility/Pods-NYU Mobility.release.xcconfig"; sourceTree = "<group>"; };
 		A10AE4CA2610D1A6004BB906 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		A149574225CE0717006BBFAC /* NYU Mobility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYU Mobility.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A149574525CE0717006BBFAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,8 @@
 		A1C483E125F1218A004E41D5 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		A1E94B3825E96D420050EF24 /* NYU Mobility.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NYU Mobility.entitlements"; sourceTree = "<group>"; };
 		A1E94B3925E96D430050EF24 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		E3420016E8629583081E633A /* Pods-NYU Mobility.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYU Mobility.debug.xcconfig"; path = "Target Support Files/Pods-NYU Mobility/Pods-NYU Mobility.debug.xcconfig"; sourceTree = "<group>"; };
+		EAC85BE0A98D789CE8C4EC4F /* Pods_NYU_Mobility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYU_Mobility.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1E94B3A25E96D430050EF24 /* HealthKit.framework in Frameworks */,
+				653A3338D232089ACA6565EE /* Pods_NYU_Mobility.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				A1E94B3925E96D430050EF24 /* HealthKit.framework */,
+				EAC85BE0A98D789CE8C4EC4F /* Pods_NYU_Mobility.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -104,6 +110,7 @@
 				A149574425CE0717006BBFAC /* NYU Mobility */,
 				A149574325CE0717006BBFAC /* Products */,
 				6CEE1BCA2843830B49071847 /* Frameworks */,
+				D5E07A2EFC215E4D5F20AE6A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +201,16 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		D5E07A2EFC215E4D5F20AE6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3420016E8629583081E633A /* Pods-NYU Mobility.debug.xcconfig */,
+				560113D37EA9E6FC513BB510 /* Pods-NYU Mobility.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,9 +218,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A149575925CE0718006BBFAC /* Build configuration list for PBXNativeTarget "NYU Mobility" */;
 			buildPhases = (
+				0DA5911A87375C1190EEE0A9 /* [CP] Check Pods Manifest.lock */,
 				A149573E25CE0717006BBFAC /* Sources */,
 				A149573F25CE0717006BBFAC /* Frameworks */,
 				A149574025CE0717006BBFAC /* Resources */,
+				5F0F0AB4C0EF728639BDD94C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +277,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DA5911A87375C1190EEE0A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NYU Mobility-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F0F0AB4C0EF728639BDD94C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NYU Mobility/Pods-NYU Mobility-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NYU Mobility/Pods-NYU Mobility-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NYU Mobility/Pods-NYU Mobility-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A149573E25CE0717006BBFAC /* Sources */ = {
@@ -429,6 +490,7 @@
 		};
 		A149575A25CE0718006BBFAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3420016E8629583081E633A /* Pods-NYU Mobility.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -449,6 +511,7 @@
 		};
 		A149575B25CE0718006BBFAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 560113D37EA9E6FC513BB510 /* Pods-NYU Mobility.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
