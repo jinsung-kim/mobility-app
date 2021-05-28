@@ -24,6 +24,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     
     // Amount of time that needs to pass before data is collected
     var secondsRemaining: Int = 10
+    var ct: Int = 0
+    var inSession: Bool = false
     
     // Time when the warning is given -> 3 or 5 recommended
     // Cannot be less than 3 (will be caught in assert below in testing mode)
@@ -71,7 +73,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     @IBAction func switchState(_ sender: UIButton) {
         switch(self.state) {
         case 0: // Start tracking
-            
+            ct = secondsRemaining
             handleTimer(secondsRemaining, startWarning)
             
             sender.setTitle("Stop", for: .normal)
@@ -99,6 +101,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
      Finally, the draw veering model function is called -> which will draw out the graphic for the actual veering
      */
     func stopTracking() {
+        inSession = false
         locationManager.stopUpdatingHeading()
         locationManager.stopUpdatingLocation()
     }
@@ -205,27 +208,30 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
      Important assumption for testing: the start warning must be made at least three seconds in advance to the start
      */
     func handleTimer(_ sc: Int, _ startWarning: Int) {
-        var secondsRemaining: Int = sc // Copying the constant variable into a mutable counter
+        self.ct = sc // Copying the constant variable into a mutable counter
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
             
             // If the counter goes below a certain time, a function will be triggered
-            if (secondsRemaining > 0) {
+            if (self.ct > 0) {
 //                print ("\(secondsRemaining) seconds") // For debugging purposes
                 
                 // Reads the message out loud to the user that the session is going to begin soon
-                if (secondsRemaining == startWarning) {
+                if (self.ct == startWarning && self.inSession == false) {
                     assert(startWarning >= 3)
                     self.speakMessage("Session starting in \(startWarning) seconds")
                 }
                 
-                secondsRemaining -= 1
+                self.ct -= 1
             // In this case: the set up function where data is collected is triggered.
-            } else if (secondsRemaining == 0) { // Time to begin the session
+            } else if (self.ct == 0) { // Time to begin the session
                 
-                self.setup() // Starts the tracking process
-                
-                // Reads the message out loud to the user that the session has begun
-                self.speakMessage("Starting the session now")
+                if (self.inSession) {
+                    self.setup() // Starts the tracking process
+                    
+                    self.inSession = true
+                    // Reads the message out loud to the user that the session has begun
+                    self.speakMessage("Starting the session now")
+                }
                 
                 // Invalidate the timer
                 Timer.invalidate()
