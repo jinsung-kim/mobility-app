@@ -58,6 +58,9 @@ class VeeringResultsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        trimEnding(5)
+        
         calculateVeering()
         
         // Turn detection
@@ -68,6 +71,31 @@ class VeeringResultsController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true) // animates view disappearing
         clearVeeringModel()
+    }
+    
+    /**
+     Used to trim the ending of each session as they are removing their device
+     
+     - Parameters:
+        - time (int): number of seconds to trim off at the end
+     - Returns:
+        None
+     */
+    func trimEnding(_ time: Int) {
+        var currTrimTime: Int = 0
+        let CUT_OUT: Int = time * 1000
+        
+        print(compassTrackings.count)
+        
+        for i in (0 ..< timeIntervals.count).reversed() {
+            currTrimTime += timeIntervals[i]
+            if (currTrimTime < CUT_OUT) {
+                timeIntervals.remove(at: i)
+                compassTrackings.remove(at: i)
+            }
+        }
+        
+        print(compassTrackings.count)
     }
     
     /**
