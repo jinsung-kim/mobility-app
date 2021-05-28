@@ -41,6 +41,8 @@ class VeeringResultsController: UIViewController {
     // Orientation Array
     var compassTrackings: [Double] = []
     
+    var dTheta: Double = 0.0
+    
     //
     // Constants used to draw the graphic
     //
@@ -60,12 +62,14 @@ class VeeringResultsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        trimEnding(5)
+        totalTime = trimEnding(5)
         
         calculateVeering()
         
         // Turn detection
 //        calculateTurns()
+        
+        print(convertToJSON())
     }
     
     // Clears the view when this screen is no longer visible
@@ -81,13 +85,13 @@ class VeeringResultsController: UIViewController {
      - Parameters:
         - time (int): number of seconds to trim off at the end
      - Returns:
-        - Total time of the session
+        - Total time of the session (in milliseconds)
      */
-    func trimEnding(_ time: Int) {
+    func trimEnding(_ time: Int) -> Int {
         var currTrimTime: Int = 0
         let CUT_OUT: Int = time * 1000
         
-        
+        var totalTime: Int = 0
         
 //        print(compassTrackings.count)
         
@@ -96,31 +100,56 @@ class VeeringResultsController: UIViewController {
             if (currTrimTime < CUT_OUT) {
                 timeIntervals.remove(at: i)
                 compassTrackings.remove(at: i)
-            } else { // break out of the loop
+            } else {
                 break
             }
         }
         
+        for i in 0 ..< timeIntervals.count {
+            totalTime += timeIntervals[i]
+        }
+        
 //        print(compassTrackings.count)
+        
+        return totalTime
     }
     
     /**
      Turns all of the collected data into a JSON that can be sent to a database
+     
+     https://github.com/SwiftyJSON/SwiftyJSON#requirements
      
      - Parameters:
         None
      - Returns: JSON of all the collected data
      */
     func convertToJSON() -> JSON {
-        var curr: Dictionary<String, [Any]> = [:]
         
-        // Setting all the keys and values
-        curr["timeIntervals"] = self.timeIntervals
-        curr["compassTrackings"] = self.compassTrackings
-        
-        let res: JSON = JSON(curr)
+        let res: JSON = [
+            "timeIntervals": self.timeIntervals,
+            "compassTracking": self.compassTrackings,
+            "totalTime": self.totalTime,
+            "degreesVeered": self.dTheta,
+        ]
         
         return res
+    }
+    
+    /**
+     Sends the JSON to a database
+     The data is only sent if there are more than 30 seconds of footage captured
+     
+     - Parameters:
+        - json: The JSON that will be stored
+     - Returns:
+        - None
+     */
+    func sendToDatabase(_ json: JSON) {
+        if (totalTime < (30 * 1000)) {
+            return
+        }
+        
+        
     }
     
     /**
@@ -316,7 +345,7 @@ class VeeringResultsController: UIViewController {
         
         // Currently the way we detect the difference in theta (veering angle)
         // Takes the minimum of difference -> as the theta of degrees
-        let dTheta = min(abs(startTheta - endTheta), abs(360 - startTheta + endTheta))
+        dTheta = min(abs(startTheta - endTheta), abs(360 - startTheta + endTheta))
         let estVeer = abs(sin(dTheta) * Double(distance))
         
         // Main label that returns calculated results based on data collected

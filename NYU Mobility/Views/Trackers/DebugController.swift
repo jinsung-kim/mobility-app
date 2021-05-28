@@ -25,7 +25,6 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
     // Amount of time that needs to pass before data is collected
     var secondsRemaining: Int = 10
     var ct: Int = 0
-    var inSession: Bool = false
     
     // Time when the warning is given -> 3 or 5 recommended
     // Cannot be less than 3 (will be caught in assert below in testing mode)
@@ -101,7 +100,6 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
      Finally, the draw veering model function is called -> which will draw out the graphic for the actual veering
      */
     func stopTracking() {
-        inSession = false
         locationManager.stopUpdatingHeading()
         locationManager.stopUpdatingLocation()
     }
@@ -216,7 +214,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
 //                print ("\(secondsRemaining) seconds") // For debugging purposes
                 
                 // Reads the message out loud to the user that the session is going to begin soon
-                if (self.ct == startWarning && self.inSession == false) {
+                if (self.ct == startWarning) {
                     assert(startWarning >= 3)
                     self.speakMessage("Session starting in \(startWarning) seconds")
                 }
@@ -225,13 +223,9 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             // In this case: the set up function where data is collected is triggered.
             } else if (self.ct == 0) { // Time to begin the session
                 
-                if (self.inSession) {
-                    self.setup() // Starts the tracking process
-                    
-                    self.inSession = true
-                    // Reads the message out loud to the user that the session has begun
-                    self.speakMessage("Starting the session now")
-                }
+                self.setup() // Starts the tracking process
+                // Reads the message out loud to the user that the session has begun
+                self.speakMessage("Starting the session now")
                 
                 // Invalidate the timer
                 Timer.invalidate()
