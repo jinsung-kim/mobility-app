@@ -64,12 +64,13 @@ class VeeringResultsController: UIViewController {
         calculateVeering()
         
         // Turn detection
-        calculateTurns()
+//        calculateTurns()
     }
     
     // Clears the view when this screen is no longer visible
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true) // animates view disappearing
+//        print("leaving this view")
         clearVeeringModel()
     }
     
@@ -85,17 +86,30 @@ class VeeringResultsController: UIViewController {
         var currTrimTime: Int = 0
         let CUT_OUT: Int = time * 1000
         
-        print(compassTrackings.count)
+//        print(compassTrackings.count)
         
         for i in (0 ..< timeIntervals.count).reversed() {
             currTrimTime += timeIntervals[i]
             if (currTrimTime < CUT_OUT) {
                 timeIntervals.remove(at: i)
                 compassTrackings.remove(at: i)
+            } else { // break out of the loop
+                break
             }
         }
         
-        print(compassTrackings.count)
+//        print(compassTrackings.count)
+    }
+    
+    /**
+     Turns all of the collected data into a JSON that can be sent to a database
+     
+     - Parameters:
+        None
+     - Returns: JSON of all the collected data
+     */
+    func convertToJSON() {
+        
     }
     
     /**

@@ -83,6 +83,8 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
         case 2: // This is the default resting state
             // Performing the segue over to the results controller
             performSegue(withIdentifier: "ShowVeeringResults", sender: nil)
+            
+            clearSessionData() // Delete the data once we no longer need it
             sender.setTitle("Start", for: .normal)
             self.state = 0
         default: // Should never happen
@@ -208,7 +210,7 @@ class DebugController: UIViewController, CLLocationManagerDelegate {
             
             // If the counter goes below a certain time, a function will be triggered
             if (secondsRemaining > 0) {
-                print ("\(secondsRemaining) seconds") // For debugging purposes
+//                print ("\(secondsRemaining) seconds") // For debugging purposes
                 
                 // Reads the message out loud to the user that the session is going to begin soon
                 if (secondsRemaining == startWarning) {
