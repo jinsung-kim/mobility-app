@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		A149576E25CE0972006BBFAC /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = A149576D25CE0972006BBFAC /* Point.swift */; };
 		A156B68B26120E3400E17DC8 /* DebugController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A156B68A26120E3400E17DC8 /* DebugController.swift */; };
 		A16DFCDC26430EA200180219 /* VeeringResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DFCDB26430EA200180219 /* VeeringResultsController.swift */; };
+		A190838726619F620044EED0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A190838626619F610044EED0 /* GoogleService-Info.plist */; };
 		A1924DA4263843B10019DD7D /* TimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1924DA3263843B10019DD7D /* TimeSince.swift */; };
 		A1B2EB79263B9A6F001433C0 /* Double+Truncate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */; };
 		A1B2EB7B263C43BA001433C0 /* InputDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2EB7A263C43BA001433C0 /* InputDialog.swift */; };
@@ -51,6 +52,7 @@
 		A149576D25CE0972006BBFAC /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		A156B68A26120E3400E17DC8 /* DebugController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugController.swift; sourceTree = "<group>"; };
 		A16DFCDB26430EA200180219 /* VeeringResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeeringResultsController.swift; sourceTree = "<group>"; };
+		A190838626619F610044EED0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1924DA3263843B10019DD7D /* TimeSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSince.swift; sourceTree = "<group>"; };
 		A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Truncate.swift"; sourceTree = "<group>"; };
 		A1B2EB7A263C43BA001433C0 /* InputDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDialog.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				A149576325CE08C4006BBFAC /* UI */,
 				A149576225CE08BD006BBFAC /* Models */,
 				A149575625CE0718006BBFAC /* Info.plist */,
+				A190838626619F610044EED0 /* GoogleService-Info.plist */,
 			);
 			path = "NYU Mobility";
 			sourceTree = "<group>";
@@ -207,7 +210,6 @@
 				E3420016E8629583081E633A /* Pods-NYU Mobility.debug.xcconfig */,
 				560113D37EA9E6FC513BB510 /* Pods-NYU Mobility.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -271,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A149575525CE0718006BBFAC /* LaunchScreen.storyboard in Resources */,
+				A190838726619F620044EED0 /* GoogleService-Info.plist in Resources */,
 				A149575225CE0718006BBFAC /* Assets.xcassets in Resources */,
 				A149574D25CE0717006BBFAC /* Main.storyboard in Resources */,
 			);
