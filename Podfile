@@ -6,7 +6,7 @@ target 'NYU Mobility' do
   use_frameworks!
 
   # Pods for NYU Mobility
-  pod 'SwiftyJSON', '~> 4.0'
+#  pod 'SwiftyJSON', '~> 4.0'
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'

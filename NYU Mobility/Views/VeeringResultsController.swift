@@ -70,7 +70,6 @@ class VeeringResultsController: UIViewController {
         // Turn detection
 //        calculateTurns()
         
-//        sendToDatabase(convertToJSON())
         DatabaseManager.shared.insertSession(convertToJSON(), completion: { res in
             print(res)
         })
@@ -121,7 +120,7 @@ class VeeringResultsController: UIViewController {
     /**
      Turns all of the collected data into a JSON that can be sent to a database
      
-     https://github.com/SwiftyJSON/SwiftyJSON#requirements
+     This is used when
      
      - Parameters:
         None
