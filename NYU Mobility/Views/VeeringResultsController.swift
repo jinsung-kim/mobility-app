@@ -20,10 +20,9 @@ enum Direction {
 /// We are placing this here now because the session tracking screen will have one giant button
 class VeeringResultsController: UIViewController {
     
+    // Tells the user session has been saved to the database
     @IBOutlet weak var sessionLabel: UILabel!
     @IBOutlet weak var veeringLabel: UILabel!
-    
-    // Tells the user session has been saved to the database
     
     
     @IBOutlet weak var veeringModel: UIView!
@@ -76,7 +75,7 @@ class VeeringResultsController: UIViewController {
 //        calculateTurns()
         
         DatabaseManager.shared.insertSession(convertToJSON(), completion: { res in
-            print(res)
+            self.updateLabel(res)
         })
     }
     
@@ -85,6 +84,16 @@ class VeeringResultsController: UIViewController {
         super.viewDidDisappear(true) // animates view disappearing
 //        print("leaving this view")
         clearVeeringModel()
+    }
+    
+    /// This function updates the session label with details regarding the session
+    /// and tells the user if the session was uploaded (for transparency)
+    func updateLabel(_ res: Bool) {
+        if (res) {
+            sessionLabel.text = "Session was uploaded to the database"
+        } else {
+            sessionLabel.text = "Session complete but not uploaded"
+        }
     }
     
     /**
