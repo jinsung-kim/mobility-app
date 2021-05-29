@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import SwiftyJSON
+import FirebaseDatabase
+import FirebaseAuth
 
 // Used to determine what direction the veering was done
 enum Direction {
@@ -69,7 +70,10 @@ class VeeringResultsController: UIViewController {
         // Turn detection
 //        calculateTurns()
         
-        print(convertToJSON())
+//        sendToDatabase(convertToJSON())
+        DatabaseManager.shared.insertSession(convertToJSON(), completion: { res in
+            print(res)
+        })
     }
     
     // Clears the view when this screen is no longer visible
@@ -121,11 +125,11 @@ class VeeringResultsController: UIViewController {
      
      - Parameters:
         None
-     - Returns: JSON of all the collected data
+     - Returns: NSDictionary aka <String: Any> of all the collected data
      */
-    func convertToJSON() -> JSON {
+    func convertToJSON() -> NSDictionary {
         
-        let res: JSON = [
+        let res: NSDictionary = [
             "timeIntervals": self.timeIntervals,
             "compassTracking": self.compassTrackings,
             "totalTime": self.totalTime,
@@ -144,12 +148,14 @@ class VeeringResultsController: UIViewController {
      - Returns:
         - None
      */
-    func sendToDatabase(_ json: JSON) {
+    func sendToDatabase(_ json: NSDictionary) {
         if (totalTime < (30 * 1000)) {
             return
         }
         
-        
+        DatabaseManager.shared.insertSession(json, completion: { res in
+            print(res)
+        })
     }
     
     /**

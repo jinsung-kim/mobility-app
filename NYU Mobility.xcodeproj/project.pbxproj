@@ -20,6 +20,7 @@
 		A156B68B26120E3400E17DC8 /* DebugController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A156B68A26120E3400E17DC8 /* DebugController.swift */; };
 		A16DFCDC26430EA200180219 /* VeeringResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16DFCDB26430EA200180219 /* VeeringResultsController.swift */; };
 		A190838726619F620044EED0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A190838626619F610044EED0 /* GoogleService-Info.plist */; };
+		A19083892661A9230044EED0 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19083882661A9230044EED0 /* DatabaseManager.swift */; };
 		A1924DA4263843B10019DD7D /* TimeSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1924DA3263843B10019DD7D /* TimeSince.swift */; };
 		A1B2EB79263B9A6F001433C0 /* Double+Truncate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */; };
 		A1B2EB7B263C43BA001433C0 /* InputDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2EB7A263C43BA001433C0 /* InputDialog.swift */; };
@@ -53,6 +54,7 @@
 		A156B68A26120E3400E17DC8 /* DebugController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugController.swift; sourceTree = "<group>"; };
 		A16DFCDB26430EA200180219 /* VeeringResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeeringResultsController.swift; sourceTree = "<group>"; };
 		A190838626619F610044EED0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A19083882661A9230044EED0 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		A1924DA3263843B10019DD7D /* TimeSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSince.swift; sourceTree = "<group>"; };
 		A1B2EB78263B9A6F001433C0 /* Double+Truncate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Truncate.swift"; sourceTree = "<group>"; };
 		A1B2EB7A263C43BA001433C0 /* InputDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDialog.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				A149574525CE0717006BBFAC /* AppDelegate.swift */,
 				A149574725CE0717006BBFAC /* SceneDelegate.swift */,
 				A1C483E125F1218A004E41D5 /* LineChart.swift */,
+				A19083882661A9230044EED0 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				A149575025CE0717006BBFAC /* NYU_Mobility_3.xcdatamodeld in Sources */,
 				A1C483E225F1218A004E41D5 /* LineChart.swift in Sources */,
 				A1B9168D25CE111400D8D8D7 /* StartController.swift in Sources */,
+				A19083892661A9230044EED0 /* DatabaseManager.swift in Sources */,
 				A1B916A225CE38E200D8D8D7 /* ShareController.swift in Sources */,
 				A1B9169F25CE36E600D8D8D7 /* Step.swift in Sources */,
 				A149576E25CE0972006BBFAC /* Point.swift in Sources */,
