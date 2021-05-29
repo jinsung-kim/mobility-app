@@ -67,8 +67,8 @@ extension DatabaseManager {
                     }
                     completion(true)
                 })
-            } else {
-                self.database.child("session").setValue(session, withCompletionBlock: {
+            } else { // No sessions yet -> Start the array
+                self.database.child("session").setValue([session], withCompletionBlock: {
                     error, _ in
                     guard error == nil else {
                         completion(false)
