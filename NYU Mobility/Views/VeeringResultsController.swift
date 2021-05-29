@@ -23,6 +23,9 @@ class VeeringResultsController: UIViewController {
     @IBOutlet weak var sessionLabel: UILabel!
     @IBOutlet weak var veeringLabel: UILabel!
     
+    // Tells the user session has been saved to the database
+    
+    
     @IBOutlet weak var veeringModel: UIView!
     
     // Veering in a particular direction
@@ -43,6 +46,8 @@ class VeeringResultsController: UIViewController {
     var compassTrackings: [Double] = []
     
     var dTheta: Double = 0.0
+    
+    var direction: Int = -1
     
     //
     // Constants used to draw the graphic
@@ -133,6 +138,7 @@ class VeeringResultsController: UIViewController {
             "compassTracking": self.compassTrackings,
             "totalTime": self.totalTime,
             "degreesVeered": self.dTheta,
+            "direction": self.direction
         ]
         
         return res
@@ -351,6 +357,7 @@ class VeeringResultsController: UIViewController {
         // Currently the way we detect the difference in theta (veering angle)
         // Takes the minimum of difference -> as the theta of degrees
         dTheta = min(abs(startTheta - endTheta), abs(360 - startTheta + endTheta))
+        dTheta = min(dTheta, abs(360 - endTheta + startTheta))
         let estVeer = abs(sin(dTheta) * Double(distance))
         
         // Main label that returns calculated results based on data collected
@@ -361,10 +368,13 @@ class VeeringResultsController: UIViewController {
         
         // This indicates veering to the left - more left slope changes
         if (lC > rC) {
+            self.direction = 0
             drawVeeringModel(Direction.left)
         } else if (rC > lC) {
+            self.direction = 1
             drawVeeringModel(Direction.right)
         } else {
+            self.direction = -1
             // Overall no veering detected (net zero)
             drawVeeringModel(Direction.straight)
         }
